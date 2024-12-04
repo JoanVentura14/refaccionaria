@@ -37,10 +37,11 @@ CREATE TABLE products (
 -- Tabla de órdenes
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
-    user_id UUID NOT NULL REFERENCES users(id),
-    total DECIMAL(10, 2) NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW()
-
+    user_id UUID NOT NULL REFERENCES users(id), -- Usuario que realizó la orden
+    total DECIMAL(10, 2) NOT NULL, -- Total de la orden
+    created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
+    status_order TEXT NOT NULL CHECK (status IN ('carrito', 'pagada', 'cancelada')), -- Estado de la orden
+    paid_at TIMESTAMP -- Fecha de pago, NULL si no se ha pagado
 );
 
 -- Detalles de los productos en cada orden
@@ -95,10 +96,16 @@ CREATE TABLE product_vehicle_compatibility (
 -- Crear la tabla tipo_envio
 CREATE TABLE tipo_envio (
     id SERIAL PRIMARY KEY,
-    tipo VARCHAR(6)  NOT NULL, -- Texto para indicar el tipo de envío (Full, Común, etc.)
-    precio DECIMAL(3, 2) NOT NULL -- Precio del envío
+    type VARCHAR(6)  NOT NULL, -- Texto para indicar el tipo de envío (Full, Común, etc.)
+    price DECIMAL(3, 2) NOT NULL -- Precio del envío
 );
 
+-- Tabla de subcategorías
+CREATE TABLE subcategories (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL, -- Nombre de la subcategoría (ej: dados, matracas)
+    category_id INT NOT NULL REFERENCES categories(id)
+);
 
 
 INSERT INTO product_vehicle_compatibility (product_id, vehicle_id) VALUES
