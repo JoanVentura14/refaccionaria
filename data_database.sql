@@ -23,6 +23,7 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL, -- Nombre de la pieza (ej. "Filtro de aire")
     description TEXT, -- Descripción detallada
+    imagen VARCHAR(255),
     price DECIMAL(10, 2) NOT NULL, -- Precio de la pieza
     stock INT DEFAULT 0, -- Cantidad disponible
     category_id INT NOT NULL REFERENCES categories(id) ON DELETE CASCADE, -- Categoría de la pieza
@@ -39,7 +40,7 @@ CREATE TABLE orders (
     user_id UUID NOT NULL REFERENCES users(id),
     total DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
-    
+
 );
 
 -- Detalles de los productos en cada orden
@@ -63,7 +64,8 @@ CREATE TABLE points (
 CREATE TABLE discounts (
     id SERIAL PRIMARY KEY,
     points_required INT NOT NULL,
-    discount_percentage DECIMAL(5, 2) NOT NULL
+    discount_percentage_comun DECIMAL(5, 2) NOT NULL,
+    discount_percentage_mayorist DECIMAL(5, 2) NOT NULL
 );
 
 --Tabla categorias
