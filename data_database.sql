@@ -92,8 +92,12 @@ CREATE TABLE product_vehicle_compatibility (
     UNIQUE (product_id, vehicle_id) -- Evita duplicados
 );
 
-
-
+-- Crear la tabla tipo_envio
+CREATE TABLE tipo_envio (
+    id SERIAL PRIMARY KEY,
+    tipo VARCHAR(6)  NOT NULL, -- Texto para indicar el tipo de envío (Full, Común, etc.)
+    precio DECIMAL(3, 2) NOT NULL -- Precio del envío
+);
 
 
 
