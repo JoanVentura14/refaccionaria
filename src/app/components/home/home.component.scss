@@ -1,0 +1,24 @@
+
+
+main {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa del viewport */
+    background-color: #f8f9fa; /* Fondo claro para contraste */
+  }
+  
+  /* Ajustar el contenedor del carrusel */
+  .carousel-inner {
+    display: flex;
+    
+    height: 80%; /* Altura fija del carrusel */
+  }
+  
+  /* Estilo de las imágenes */
+  .carousel-item img {
+    max-width: 100%; /* Ajusta el ancho máximo */
+    max-height: 95%; /* Ajusta la altura máxima */
+    object-fit: contain; /* Ajusta el contenido sin deformarlo */
+    margin: auto; /* Centra la imagen dentro del contenedor */
+  }
