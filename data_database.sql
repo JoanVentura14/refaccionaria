@@ -17,6 +17,12 @@ CREATE TABLE users (
     active BOOLEAN DEFAULT TRUE
 );
 
+--posible modificacion
+ALTER TABLE users ADD COLUMN address TEXT;
+ALTER TABLE users ADD COLUMN latitude DECIMAL(10, 8); -- Coordenadas para calcular distancia
+ALTER TABLE users ADD COLUMN longitude DECIMAL(11, 8);
+
+
 
 -- Tabla de productos
 CREATE TABLE products (
@@ -42,6 +48,10 @@ CREATE TABLE orders (
     created_at TIMESTAMP DEFAULT NOW()
 
 );
+--posible modificacion
+ALTER TABLE orders ADD COLUMN status VARCHAR(20) DEFAULT 'pending'; -- Estado del pedido
+ALTER TABLE orders ADD COLUMN tipo_envio_id INT REFERENCES tipo_envio(id); -- Relación con envío
+
 
 -- Detalles de los productos en cada orden
 CREATE TABLE order_items (
@@ -99,7 +109,53 @@ CREATE TABLE tipo_envio (
     precio DECIMAL(3, 2) NOT NULL -- Precio del envío
 );
 
+--direcciones de usuarios
+CREATE TABLE user_addresses (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    address TEXT NOT NULL,
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
+    is_default BOOLEAN DEFAULT FALSE
+);
 
+--historial de puntos
+CREATE TABLE points_history (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
+    change INT NOT NULL, -- Positivo (ganancia) o negativo (redimido)
+    reason TEXT, -- Razón del cambio (compra, canje, etc.)
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+--promociones por producto
+CREATE TABLE product_discounts (
+    id SERIAL PRIMARY KEY,
+    product_id INT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    discount_percentage DECIMAL(5, 2) NOT NULL, -- Descuento específico
+    start_date TIMESTAMP,
+    end_date TIMESTAMP
+);
+
+--inventario historial
+CREATE TABLE inventory_history (
+    id SERIAL PRIMARY KEY,
+    product_id INT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    change INT NOT NULL, -- Incremento o decremento
+    reason TEXT, -- Razón del cambio (venta, ajuste, etc.)
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+--historial de roles
+CREATE TABLE role_changes (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    changed_by INT NOT NULL REFERENCES users(id), -- Admin que hizo el cambio
+    old_role_id INT NOT NULL REFERENCES roles(id),
+    new_role_id INT NOT NULL REFERENCES roles(id),
+    changed_at TIMESTAMP DEFAULT NOW()
+);
+    
 
 INSERT INTO product_vehicle_compatibility (product_id, vehicle_id) VALUES
 (1, 1), -- Compatible con Toyota Corolla 2020
