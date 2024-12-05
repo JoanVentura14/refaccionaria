@@ -5,7 +5,7 @@ main {
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     height: 100vh; /* Altura completa del viewport */
-    background-color: #f8f9fa; /* Fondo claro para contraste */
+    background-color: #FFFF; /* Fondo claro para contraste */
   }
   
   /* Ajustar el contenedor del carrusel */
@@ -22,3 +22,104 @@ main {
     object-fit: contain; /* Ajusta el contenido sin deformarlo */
     margin: auto; /* Centra la imagen dentro del contenedor */
   }
+
+  .btn-icon {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: 20px 20px; /* Ajusta el tamaño del ícono */
+    padding-left: 10px; /* Espacio para el texto */
+   
+  }
+
+  .navbar-custom {
+    background-color: #C3BDA5; /* Cambia este color por el que prefieras */
+  }
+
+  .icon-background {
+    display: inline-block; /* Controla el fondo */
+    color: black; /* Cambia el color del ícono */
+    padding: 10px; /* Añade espacio alrededor del ícono */
+    border-radius: 50%; /* Hace el fondo circular */
+    text-align: center; /* Centra el ícono */
+    font-size: 18px; /* Tamaño del ícono */
+    width: 40px; /* Ajusta el ancho del contenedor */
+    height: 40px; /* Ajusta la altura del contenedor */
+   
+}
+
+.custom-search {
+  width: 270px; /* Cambia el valor según tus necesidades */
+  border: 1px solid #000000; /* Grosor, estilo y color */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+  padding: 10px; /* Espaciado interno */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Sombra difusa para el efecto de desvanecimiento */
+}
+
+
+  .nav-link.dropdown-toggle {
+    font-style: italic; /* Aplica estilo en cursiva */
+    font-weight: 600; /* Semi Bold */
+    font-family: 'TuFuente', sans-serif; /* Cambia 'TuFuente' al nombre de la fuente deseada */
+    font-size: 16px;
+    color: black;
+}
+
+.dropdown-item {
+  font-style: italic; /* Aplica estilo en cursiva */
+  font-weight: 600; /* Semi Bold */
+  font-family: 'TuFuente', sans-serif; /* Cambia 'TuFuente' al nombre de la fuente deseada */
+  font-size: 12px; /* Tamaño de letra */
+  color: black; /* Color del texto */
+  padding: 10px 15px; /* Espaciado alrededor del texto */
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+
+/* Estilo general para el enlace de la lista */
+.nav-link.dropdown-toggle {
+  font-style: italic; /* Cursiva */
+  font-weight: 600; /* Semi-bold */
+  font-family: 'Arial', sans-serif; /* Fuente moderna */
+  font-size: 14px; /* Tamaño adecuado */
+  color: #333; /* Color de texto */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
+.nav-link.dropdown-toggle:hover {
+  color: #007bff; /* Color al pasar el cursor */
+  background-color: #f1f1f1; /* Fondo claro al pasar el cursor */
+}
+
+/* Estilo del menú desplegable */
+.custom-dropdown {
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 0; /* Eliminar padding adicional */
+  min-width: 200px; /* Ancho mínimo del menú */
+}
+
+.custom-dropdown .dropdown-item {
+  font-family: 'Arial', sans-serif; /* Fuente limpia */
+  font-weight: 500; /* Peso de la fuente */
+  color: #555; /* Color del texto */
+  padding: 10px 15px; /* Espaciado */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.custom-dropdown .dropdown-item:hover {
+  color: white; /* Color del texto al pasar el cursor */
+  background-color: #007bff; /* Fondo azul */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .custom-dropdown {
+      min-width: 180px; /* Ancho más pequeño en pantallas pequeñas */
+  }
+  .nav-link.dropdown-toggle {
+      font-size: 16px; /* Ajuste del tamaño de la fuente en pantallas pequeñas */
+  }
+}
