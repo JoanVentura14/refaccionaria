@@ -1,0 +1,100 @@
+.login-container {
+    width: 350px;
+    margin: 80px auto; /* Margen superior ajustado */
+    padding: 30px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 4px 4px 10px #c8c8c8, -4px -4px 10px #ffffff;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .logo {
+    width: 100%;
+    margin-bottom: 20px; /* Espacio entre el logo y el formulario */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo img {
+    max-width: 150px; /* Tamaño ajustable del logo */
+    height: auto;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: inset 2px 2px 5px #c8c8c8, inset -2px -2px 5px #ffffff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #4caf50;
+    box-shadow: inset 1px 1px 3px #4caf50, inset -1px -1px 3px #4caf50;
+    outline: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(145deg, #4caf50, #3e8e41);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #3c7d38, -2px -2px 5px #5ddf62;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: linear-gradient(145deg, #3e8e41, #4caf50);
+    box-shadow: 1px 1px 3px #3c7d38, -1px -1px 3px #5ddf62;
+  }
+  
+  button:active {
+    box-shadow: inset 2px 2px 5px #3c7d38, inset -2px -2px 5px #5ddf62;
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .logo img {
+      max-width: 120px; /* Tamaño reducido en pantallas pequeñas */
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    input {
+      font-size: 14px;
+    }
+  
+    button {
+      font-size: 16px;
+    }
+  }
+  
