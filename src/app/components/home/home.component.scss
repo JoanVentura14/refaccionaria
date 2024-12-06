@@ -1,70 +1,32 @@
-
-
-main {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Altura completa del viewport */
-    background-color: #FFFF; /* Fondo claro para contraste */
-  }
-  
-  /* Ajustar el contenedor del carrusel */
-  .carousel-inner {
-    display: flex;
-    
-    height: 80%; /* Altura fija del carrusel */
-  }
-  
-  /* Estilo de las imágenes */
-  .carousel-item img {
-    max-width: 100%; /* Ajusta el ancho máximo */
-    max-height: 95%; /* Ajusta la altura máxima */
-    object-fit: contain; /* Ajusta el contenido sin deformarlo */
-    margin: auto; /* Centra la imagen dentro del contenedor */
-  }
-
-  .btn-icon {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center left;
-    background-size: 20px 20px; /* Ajusta el tamaño del ícono */
-    padding-left: 10px; /* Espacio para el texto */
-   
-  }
-
-  .navbar-custom {
-    background-color: #C3BDA5; /* Cambia este color por el que prefieras */
-  }
-
-  .icon-background {
-    display: inline-block; /* Controla el fondo */
-    color: black; /* Cambia el color del ícono */
-    padding: 10px; /* Añade espacio alrededor del ícono */
-    border-radius: 50%; /* Hace el fondo circular */
-    text-align: center; /* Centra el ícono */
-    font-size: 18px; /* Tamaño del ícono */
-    width: 40px; /* Ajusta el ancho del contenedor */
-    height: 40px; /* Ajusta la altura del contenedor */
-   
+/* Configuración general */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Fondo suave para resaltar el contenido */
+  color: #000000; /* Texto legible */
 }
 
-.custom-search {
-  width: 270px; /* Cambia el valor según tus necesidades */
-  border: 1px solid #000000; /* Grosor, estilo y color */
-  border-radius: 10px; /* Bordes redondeados opcionales */
-  padding: 10px; /* Espaciado interno */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Sombra difusa para el efecto de desvanecimiento */
+/* Estilo del navbar */
+.navbar-custom {
+  background-color: #C3BDA5; /* Color personalizado del navbar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
 }
 
-
-  .nav-link.dropdown-toggle {
-    font-style: italic; /* Aplica estilo en cursiva */
-    font-weight: 600; /* Semi Bold */
-    font-family: 'TuFuente', sans-serif; /* Cambia 'TuFuente' al nombre de la fuente deseada */
-    font-size: 16px;
-    color: black;
+.navbar-brand img {
+  height: 50px; /* Tamaño uniforme del logo */
 }
 
+.navbar-nav .nav-link {
+  color: #333; /* Color del texto de los enlaces */
+  font-weight: 500; /* Peso de fuente mediano */
+  text-transform: uppercase; /* Mayúsculas */
+  transition: color 0.3s ease; /* Transición suave */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #565453; /* Gris al pasar el cursor */
+}
 .dropdown-item {
   font-style: italic; /* Aplica estilo en cursiva */
   font-weight: 600; /* Semi Bold */
@@ -72,54 +34,106 @@ main {
   font-size: 12px; /* Tamaño de letra */
   color: black; /* Color del texto */
   padding: 10px 15px; /* Espaciado alrededor del texto */
-  text-decoration: none; /* Elimina el subrayado */
+
+
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #dddbd2; /* Color de fondo al pasar el mouse */
+    color: #0b0a0a; /* Color de letra al pasar el mouse */
+  }
 }
-
-
-/* Estilo general para el enlace de la lista */
-.nav-link.dropdown-toggle {
-  font-style: italic; /* Cursiva */
-  font-weight: 600; /* Semi-bold */
-  font-family: 'Arial', sans-serif; /* Fuente moderna */
-  font-size: 14px; /* Tamaño adecuado */
-  color: #333; /* Color de texto */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave */
-}
-
-.nav-link.dropdown-toggle:hover {
-  color: #007bff; /* Color al pasar el cursor */
-  background-color: #f1f1f1; /* Fondo claro al pasar el cursor */
-}
-
-/* Estilo del menú desplegable */
-.custom-dropdown {
-  background-color: #fff; /* Fondo blanco */
+.dropdown-menu {
+  background-color: #fff; /* Fondo blanco limpio */
   border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  padding: 0; /* Eliminar padding adicional */
-  min-width: 200px; /* Ancho mínimo del menú */
+  box-shadow: 0 4px 10px rgba(90, 90, 90, 0.1); /* Sombra para el menú */
+  color: #000000;
+  
 }
 
-.custom-dropdown .dropdown-item {
-  font-family: 'Arial', sans-serif; /* Fuente limpia */
-  font-weight: 500; /* Peso de la fuente */
-  color: #555; /* Color del texto */
-  padding: 10px 15px; /* Espaciado */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+.dropdown-item {
+  color: #060606;; /* Texto gris */
+  padding: 11px 50px; /* Espaciado interno */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
 }
 
-.custom-dropdown .dropdown-item:hover {
-  color: white; /* Color del texto al pasar el cursor */
-  background-color: #007bff; /* Fondo azul */
+.dropdown-item:hover {
+  background-color: #eaeae9; 
+  color: #552b02; 
 }
 
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-  .custom-dropdown {
-      min-width: 180px; /* Ancho más pequeño en pantallas pequeñas */
-  }
-  .nav-link.dropdown-toggle {
-      font-size: 16px; /* Ajuste del tamaño de la fuente en pantallas pequeñas */
-  }
+/* Botón de búsqueda */
+.custom-search {
+  width: 270px; /* Ajuste del ancho */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-icon {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: 20px 20px; /* Ajusta el tamaño del ícono */
+  padding-left: 10px; /* Espacio para el texto */
+  background-color: #C3BDA5; /* Fondo del botón */
+  color: #fff; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+ 
+}
+
+.btn-icon:hover {
+  background-color: #5b5956; /* Oscurece el color al pasar el cursor */
+}
+
+/* Íconos */
+.icon-background {
+  background-color: #C3BDA5;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 5px; /* Espacio entre iconos */
+  margin-right: 5px;
+}
+
+.icon-background:hover {
+  background-color: #5b5956; /* Más oscuro al pasar el cursor */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+
+/* Carrusel */
+.carousel-inner {
+  border-radius: 5px; /* Bordes redondeados para el carrusel */
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el carrusel */
+  margin: 20px auto;
+}
+
+.carousel-item img {
+  max-height: 500px; /* Ajuste de altura máxima */
+  object-fit: cover; /* Recorta la imagen para ajustarla */
+  width: 15%; /* Se adapta al ancho */
+}
+
+.carousel {
+  max-width: 98%; /* Ancho máximo del carrusel */
+  margin: 0 auto; /* Centra el carrusel */
+}
+ 
+.navbar-custom .container-fluid {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  width: 80%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.container-icons{
+  padding: 0 50px;
+  width: 100%;
 }
