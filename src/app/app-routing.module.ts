@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             {path: 'login', component: LoginComponent},
+            {path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'notfound', component: NotfoundComponent },
     
             { path: '**', redirectTo: '/notfound' },

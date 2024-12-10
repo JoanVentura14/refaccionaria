@@ -12,9 +12,10 @@ import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
 import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, LoginComponent],
+    declarations: [AppComponent, NotfoundComponent, LoginComponent,ForgotPasswordComponent  ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
