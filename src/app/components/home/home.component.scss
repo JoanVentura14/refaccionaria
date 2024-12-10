@@ -1,5 +1,8 @@
 /* Configuración general */
-body {
+
+
+
+.body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -9,8 +12,13 @@ body {
 
 /* Estilo del navbar */
 .navbar-custom {
-  background-color: #C3BDA5; /* Color personalizado del navbar */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+  background-color: #C3BDA5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  width: 100%; 
+  position: fixed;
+  z-index: 1050;
 }
 
 .navbar-brand img {
@@ -107,25 +115,7 @@ body {
   transform: scale(1.1); /* Efecto de zoom */
 }
 
-/* Carrusel */
-.carousel-inner {
-  border-radius: 5px; /* Bordes redondeados para el carrusel */
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el carrusel */
-  margin: 20px auto;
-}
 
-.carousel-item img {
-  max-height: 500px; /* Ajuste de altura máxima */
-  object-fit: cover; /* Recorta la imagen para ajustarla */
-  width: 15%; /* Se adapta al ancho */
-}
-
-.carousel {
-  max-width: 98%; /* Ancho máximo del carrusel */
-  margin: 0 auto; /* Centra el carrusel */
-}
- 
 .navbar-custom .container-fluid {
   display: flex;
   justify-content: center; /* Centra el contenido horizontalmente */
@@ -139,130 +129,100 @@ body {
 }
 
 
-
-.table-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #ddd;
-  font-size: 50px;
-}
-
-
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
-}
-
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  display: flex;
+  display:grid ;
   justify-content: center;
   align-items: center;
+  margin-top: 70px; /* Espaciado igual a la altura del navbar */
+  overflow-y: auto;
+  min-height: 100vh; /* Asegura que el cuerpo ocupe todo el alto */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
 }
 
-/* FAB container positioning */
-.fab-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
+
+/* Asegurar que el navbar esté siempre encima */
+.navbar {
+  z-index: 1050; /* Mayor que el carrusel */
 }
 
-/* Hidden checkbox for controlling menu visibility */
-.fab-checkbox {
-  display: none;
+.carousel {
+  z-index: 1;
+  max-width: 100%;
 }
 
-/* Floating Action Button */
-.fab {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+
+/* Contenedor del carrusel */
+.carousel {
+  width: 95vw; /* Ocupa el 100% del ancho de la pantalla */
+ 
   position: relative;
+  margin: 0; /* Elimina cualquier margen externo */
+  padding: 0; /* Elimina cualquier relleno */
+  border-radius: 20px; /* Sin esquinas redondeadas para que cubra toda la pantalla */
 }
 
-/* Menu items */
-.fab-menu {
-  display: none;
-  flex-direction: column;
-  margin-top: 10px;
-  align-items: center;
+/* Contenedor de imágenes */
+
+
+/* Imágenes */
+.carousel-item img {
+  width: 70vw; /* Ancho igual al ancho de la pantalla */
+  height: 80vh; /* Alto igual al alto de la pantalla */
+  object-fit: cover; /* Asegura que las imágenes cubran el espacio sin deformarse */
 }
 
-/* Individual menu item styles */
-.fab-item {
-  background-color: #007bff;
-  color: white;
-  border: none;
+/* Indicadores (Opcional: Puedes personalizar o eliminarlos) */
+.carousel-indicators li {
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 5px 0;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  width: 12px;
+  height: 12px;
 }
 
-/* When checkbox is checked, show the menu */
-.fab-checkbox:checked + .fab-container .fab-menu {
-  display: flex;
+.carousel-indicators .active {
+  background-color: #ffffff; /* Indicador activo más visible */
 }
 
-/* Animations for showing menu items */
-.fab-checkbox:checked + .fab-container .fab-menu .fab-item:nth-child(1) {
-  transform: translateY(-60px);
+/* Controles (flechas) */
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
 }
 
-.fab-checkbox:checked + .fab-container .fab-menu .fab-item:nth-child(2) {
-  transform: translateY(-120px);
+.carousel-control-prev:hover, 
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.fab-checkbox:checked + .fab-container .fab-menu .fab-item:nth-child(3) {
-  transform: translateY(-180px);
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid #ccc; /* Estilo general del borde */
+}
+
+thead th {
+  background-color: #f2f2f2;
+  font-size: 24px;
+  padding: 10px;
+  border: 1px solid #ccc; /* Bordes de las celdas del encabezado */
+}
+
+thead tr:nth-child(2) th {
+  background-color: #e0e0e0;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #ccc; /* Bordes de las celdas del cuerpo */
 }
