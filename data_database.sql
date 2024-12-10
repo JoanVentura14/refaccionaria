@@ -83,6 +83,7 @@ CREATE TABLE vehicles (
     brand VARCHAR(100) NOT NULL, -- Marca del vehículo
     model VARCHAR(100) NOT NULL, -- Modelo del vehículo
     year INT NOT NULL, -- Año del vehículo
+    motor VARCHAR(100) NOT NULL, -- Motor del vehículo
     UNIQUE (brand, model, year) -- Evita duplicados
     -- motor
 );
