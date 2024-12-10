@@ -1,0 +1,30 @@
+<div class="login-container">
+    <div class="logo">
+      <img src="src/environments/lo/Parts and accessories Leo.png" alt="App Logo" />
+    </div>
+    <h2>Iniciar Sesion</h2>
+    <form (ngSubmit)="login()">
+      <label for="username">Usuario</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Ingresar Nombre de Usuario"
+        required
+      />
+  
+      <label for="password">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Ingresar Contraseña"
+        required
+      />
+  
+      <button type="submit">Continuar</button>
+    </form>
+  </div>
+  
