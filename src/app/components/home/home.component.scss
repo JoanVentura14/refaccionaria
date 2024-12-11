@@ -6,7 +6,7 @@
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9; /* Fondo suave para resaltar el contenido */
+  background-color: #ffffff; /* Fondo suave para resaltar el contenido */
   color: #000000; /* Texto legible */
 }
 
@@ -133,7 +133,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   display:grid ;
   justify-content: center;
   align-items: center;
@@ -203,26 +203,69 @@ body {
 }
 
 table {
-  width: 100%;
+  width: 70%;
   text-align: center;
   border-collapse: collapse;
-  margin-top: 20px;
-  border: 1px solid #ccc; /* Estilo general del borde */
+  margin-top: 30px;
+ 
+  margin: 30px auto;
+  table-layout: fixed;
 }
 
 thead th {
-  background-color: #f2f2f2;
-  font-size: 24px;
+  background-color: #ffffff;
+  font-size: 30px;
   padding: 10px;
-  border: 1px solid #ccc; /* Bordes de las celdas del encabezado */
+  
 }
 
 thead tr:nth-child(2) th {
-  background-color: #e0e0e0;
+  background-color: #ffffff;
   padding: 10px;
 }
 
 tbody td {
   padding: 10px;
-  border: 1px solid #ccc; /* Bordes de las celdas del cuerpo */
+  
 }
+
+.icon-item {
+  color: black;
+ font-size: 60px;
+}
+
+.icon-size {
+  width: 120px; /* Cambia este valor al tamaño deseado */
+  height: 160px;
+}
+
+th, td {
+  width: auto; /* Esto hace que el espacio se divida equitativamente */
+  padding: 10px; /* Espaciado interno para mejor visibilidad */
+
+
+}
+
+.header-custom {
+  font-weight: 600; /* Semi bold */
+  font-style: italic; /* Cursiva */
+  color: black; /* Texto negro */
+  text-align: center; /* Centrar texto opcional */
+  padding: 10px; /* Espaciado opcional */
+ 
+}
+
+.checkmark {
+  font-size: 30px; /* Tamaño de la palomita */
+  color: green; /* Color verde */
+  text-align: center; /* Centrar en la celda */
+  
+  font-family: Arial green, sans-serif
+
+ 
+ 
+  
+}
+
+
+
