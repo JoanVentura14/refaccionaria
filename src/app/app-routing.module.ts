@@ -4,7 +4,8 @@ import { NotfoundComponent } from './demo/components/notfound/notfound.component
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
-import { RegisterComponent } from './components/register/register.component';
+//import { RegisterComponent } from './components/register/register.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 
 @NgModule({
     imports: [
@@ -25,8 +26,9 @@ import { RegisterComponent } from './components/register/register.component';
             {path: 'login', component: LoginComponent},
             {path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'notfound', component: NotfoundComponent },
-            { path: 'register', component: RegisterComponent },
-    
+           // { path: 'register', component: RegisterComponent },
+
+            { path: 'create_user', component: CreateUserComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
     ],

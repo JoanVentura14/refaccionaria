@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
 import { HttpClient } from '@angular/common/http';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, LoginComponent,ForgotPasswordComponent  ],
+    declarations: [AppComponent, NotfoundComponent  ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule],
     providers: [
         {
