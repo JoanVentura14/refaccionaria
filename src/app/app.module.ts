@@ -14,14 +14,25 @@ import { PhotoService } from './demo/service/photo.service';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
 import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
+import { HttpClient } from '@angular/common/http';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, LoginComponent,ForgotPasswordComponent  ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule],
     providers: [
+        {
+            provide: 'SUPABASE_CLIENT',
+            useFactory: (): SupabaseClient => {
+              return createClient('https://ssluczzvmdastrnvdvsz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzbHVjenp2bWRhc3RybnZkdnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjg2NjIsImV4cCI6MjA0ODc0NDY2Mn0.R8CcdXwP3RevK8M4SkTRG8WVTItwASu_GFXM3CYFIes');
+           }
+         },
+        
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}
