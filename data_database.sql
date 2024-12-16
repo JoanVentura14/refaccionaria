@@ -10,11 +10,13 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY, -- Identificador interno único
     auth_id UUID NOT NULL UNIQUE, -- Relación con el ID del usuario en Supabase Auth
     name VARCHAR(255) NOT NULL, -- Nombre del usuario
+    lastname VARCHAR(255) NOT NULL, -- apelido del usuario
     email VARCHAR(255) UNIQUE, -- Correo electrónico (opcional, ya está en Supabase Auth)
     role_id INT NOT NULL REFERENCES roles(id), -- Relación con roles
     created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP, -- Fecha de última modificación
-    active BOOLEAN DEFAULT TRUE
+    active BOOLEAN DEFAULT TRUE,
+    password VARCHAR(255) NOT NULL
 );
 
 -- Tabla de productos
@@ -29,7 +31,6 @@ CREATE TABLE products (
     created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP -- Fecha de última modificación
     active BOOLEAN DEFAULT TRUE
-    -- Imagen
 );
 
 -- Tabla de órdenes
@@ -85,7 +86,6 @@ CREATE TABLE vehicles (
     year INT NOT NULL, -- Año del vehículo
     motor VARCHAR(100) NOT NULL, -- Motor del vehículo
     UNIQUE (brand, model, year) -- Evita duplicados
-    -- motor
 );
 
 --Tabla product_vehicle_compatibilit
@@ -110,7 +110,9 @@ CREATE TABLE user_addresses (
     address TEXT NOT NULL,
     latitude DECIMAL(10, 8),
     longitude DECIMAL(11, 8),
-    is_default BOOLEAN DEFAULT FALSE
+    is_default BOOLEAN DEFAULT FALSE,
+    confirmAdress TEXT NOT NULL,
+    houseDescription TEXT NOT NULL
 );
 
 -- Tabla de subcategorías
