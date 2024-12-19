@@ -10,13 +10,14 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY, -- Identificador interno único
     auth_id UUID NOT NULL UNIQUE, -- Relación con el ID del usuario en Supabase Auth
     name VARCHAR(255) NOT NULL, -- Nombre del usuario
+    lastname VARCHAR(255) NOT NULL, -- apelido del usuario
     email VARCHAR(255) UNIQUE, -- Correo electrónico (opcional, ya está en Supabase Auth)
     role_id INT NOT NULL REFERENCES roles(id), -- Relación con roles
     created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP, -- Fecha de última modificación
-    active BOOLEAN DEFAULT TRUE
+    active BOOLEAN DEFAULT TRUE,
+    password VARCHAR(255) NOT NULL
 );
-
 
 -- Tabla de productos
 CREATE TABLE products (
@@ -26,13 +27,11 @@ CREATE TABLE products (
     imagen VARCHAR(255),
     price DECIMAL(10, 2) NOT NULL, -- Precio de la pieza
     stock INT DEFAULT 0, -- Cantidad disponible
-    category_id INT NOT NULL REFERENCES categories(id) ON DELETE CASCADE, -- Categoría de la pieza
+    subcategories_id INT NOT NULL REFERENCES subcategories(id) ON DELETE CASCADE, -- Categoría de la pieza
     created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
     updated_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP -- Fecha de última modificación
     active BOOLEAN DEFAULT TRUE
 );
-
-
 
 -- Tabla de órdenes
 CREATE TABLE orders (
@@ -40,9 +39,12 @@ CREATE TABLE orders (
     user_id UUID NOT NULL REFERENCES users(id), -- Usuario que realizó la orden
     total DECIMAL(10, 2) NOT NULL, -- Total de la orden
     created_at TIMESTAMP DEFAULT NOW(), -- Fecha de creación
-    status_order TEXT NOT NULL CHECK (status IN ('carrito', 'pagada', 'cancelada')), -- Estado de la orden
+    status_order TEXT NOT NULL CHECK (status IN ('carrito', 'pagada', 'cancelada', 'pending') DEFAULT 'pending'), -- Estado de la orden
     paid_at TIMESTAMP -- Fecha de pago, NULL si no se ha pagado
 );
+
+--posible modificacion
+ALTER TABLE orders ADD COLUMN tipo_envio_id INT REFERENCES tipo_envio(id); -- Relación con envío
 
 -- Detalles de los productos en cada orden
 CREATE TABLE order_items (
@@ -65,8 +67,8 @@ CREATE TABLE points (
 CREATE TABLE discounts (
     id SERIAL PRIMARY KEY,
     points_required INT NOT NULL,
-    discount_percentage_comun DECIMAL(5, 2) NOT NULL,
-    discount_percentage_mayorist DECIMAL(5, 2) NOT NULL
+    discount_percentage DECIMAL(5, 2) NOT NULL,
+    discount_corresponds TEXT NOT NULL
 );
 
 --Tabla categorias
@@ -82,6 +84,7 @@ CREATE TABLE vehicles (
     brand VARCHAR(100) NOT NULL, -- Marca del vehículo
     model VARCHAR(100) NOT NULL, -- Modelo del vehículo
     year INT NOT NULL, -- Año del vehículo
+    motor VARCHAR(100) NOT NULL, -- Motor del vehículo
     UNIQUE (brand, model, year) -- Evita duplicados
 );
 
@@ -100,6 +103,18 @@ CREATE TABLE tipo_envio (
     price DECIMAL(3, 2) NOT NULL -- Precio del envío
 );
 
+--direcciones de usuarios
+CREATE TABLE user_addresses (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    address TEXT NOT NULL,
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
+    is_default BOOLEAN DEFAULT FALSE,
+    confirmAdress TEXT NOT NULL,
+    houseDescription TEXT NOT NULL
+);
+
 -- Tabla de subcategorías
 CREATE TABLE subcategories (
     id SERIAL PRIMARY KEY,
@@ -107,11 +122,48 @@ CREATE TABLE subcategories (
     category_id INT NOT NULL REFERENCES categories(id)
 );
 
+--historial de puntos
+CREATE TABLE points_history (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
+    change INT NOT NULL, -- Positivo (ganancia) o negativo (redimido)
+    reason TEXT, -- Razón del cambio (compra, canje, etc.)
+    created_at TIMESTAMP DEFAULT NOW()
+);
 
-INSERT INTO product_vehicle_compatibility (product_id, vehicle_id) VALUES
-(1, 1), -- Compatible con Toyota Corolla 2020
-(1, 2), -- Compatible con Toyota Corolla 2021
-(1, 3); -- Compatible con Ford Mustang 2020
+--promociones por producto
+CREATE TABLE product_discounts (
+    id SERIAL PRIMARY KEY,
+    product_id INT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    discount_percentage DECIMAL(5, 2) NOT NULL, -- Descuento específico
+    start_date TIMESTAMP,
+    end_date TIMESTAMP
+);
+
+--inventario historial
+CREATE TABLE inventory_history (
+    id SERIAL PRIMARY KEY,
+    product_id INT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    change INT NOT NULL, -- Incremento o decremento
+    reason TEXT, -- Razón del cambio (venta, ajuste, etc.)
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+--historial de roles
+CREATE TABLE role_changes (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    changed_by INT NOT NULL REFERENCES users(id), -- Admin que hizo el cambio
+    old_role_id INT NOT NULL REFERENCES roles(id),
+    new_role_id INT NOT NULL REFERENCES roles(id),
+    changed_at TIMESTAMP DEFAULT NOW()
+);
+
+
+-- INSERT INTO product_vehicle_compatibility (product_id, vehicle_id) VALUES
+-- (1, 1), -- Compatible con Toyota Corolla 2020
+-- (1, 2), -- Compatible con Toyota Corolla 2021
+-- (1, 3); -- Compatible con Ford Mustang 2020
 
 
 Opciones para integración con Supabase:

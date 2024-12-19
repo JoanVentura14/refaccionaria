@@ -19,6 +19,8 @@
   width: 100%; 
   position: fixed;
   z-index: 1050;
+  position: relative;
+  
 }
 
 .navbar-brand img {
@@ -30,6 +32,7 @@
   font-weight: 500; /* Peso de fuente mediano */
   text-transform: uppercase; /* Mayúsculas */
   transition: color 0.3s ease; /* Transición suave */
+  
 }
 
 .navbar-nav .nav-link:hover {
@@ -114,6 +117,22 @@
   background-color: #5b5956; /* Más oscuro al pasar el cursor */
   transform: scale(1.1); /* Efecto de zoom */
 }
+.icon-gear {
+  background-color: #C3BDA5;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 5px; /* Espacio entre iconos */
+  margin-right: 5px;
+}
+
+.icon-gear:hover {
+  background-color: #5b5956; /* Más oscuro al pasar el cursor */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+
 
 
 .navbar-custom .container-fluid {
@@ -121,6 +140,7 @@
   justify-content: center; /* Centra el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
   width: 80%; /* Asegura que ocupe todo el ancho disponible */
+  
 }
 
 .container-icons{
@@ -238,7 +258,9 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
   border-radius: 15px; /* Esquinas redondeadas */
   overflow: hidden; /* Oculta contenido que se salga del borde */
+  margin-top: 500px;
 }
+
 
 .carousel-inner img {
   object-fit: cover; /* Evita distorsiones en las imágenes */
@@ -351,7 +373,8 @@ h5 {
 }
 .container {
   position: relative;
-  height: 5vh; /* Altura del contenedor (por ejemplo, toda la ventana) */
+  height: 5vh; 
+  
 }
 
 .map-container {
@@ -483,3 +506,58 @@ footer {
     margin-bottom: 20px;
   }
 }
+
+
+
+
+.custom-dropdown {
+  margin: 0 10px; /* Separa los dropdowns horizontalmente */
+}
+
+.dropdown {
+  z-index: 1050; /* Asegúrate de que sea mayor que el del carrusel */
+  top: auto; 
+  margin-top: 10px;
+}
+
+
+.dropdown-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+            
+}
+
+
+.custom-dropdown .dropdown-toggle {
+  background-color: #28a745; /* color de fondo */
+  color: white; /* color del texto */
+  padding: 13px 45px; /* Ajusta el tamaño del botón */
+  border-radius: 20; /* Elimina los bordes redondeados */
+  width: 200px; /* Establece un ancho fijo para el botón */
+  text-align: center; /* Centra el texto del botón */
+  
+}
+
+/* Establecer un ancho uniforme para las celdas de la tabla */
+.table td {
+  width: 17%; /* Dividir el espacio equitativamente entre las 5 celdas */
+  text-align: center; /* Centrar el contenido */
+  
+ 
+}
+
+/* Para la tabla, hacer que ocupe todo el ancho posible */
+.table {
+  width: 95%;
+  table-layout: fixed; /* Asegura que las celdas tengan el mismo ancho */
+  
+  border: 1px solid #000; /* Borde de las celdas */
+  background-color: #2082e4; /* Color de fondo de la tabla */
+}
+
+.mb-4{
+  margin-top: 5px;
+}
+
+
