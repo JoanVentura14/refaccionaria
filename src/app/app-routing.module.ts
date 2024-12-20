@@ -2,24 +2,15 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
-
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { HomeComponent } from './components/home/home.component';
-
-
-
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
 //import { RegisterComponent } from './components/register/register.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 
-
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
-
-              
                 path: '', component: AppLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
@@ -30,32 +21,15 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) }
                 ]
             },
-           
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             {path: 'login', component: LoginComponent},
             {path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'notfound', component: NotfoundComponent },
-
-
-            {path: 'home', component: HomeComponent},
-
            // { path: 'register', component: RegisterComponent },
 
             { path: 'create_user', component: CreateUserComponent },
-
-
-           // { path: 'register', component: RegisterComponent },
-
-            { path: 'create_user', component: CreateUserComponent },
-
-           // { path: 'register', component: RegisterComponent },
-
-            { path: 'create_user', component: CreateUserComponent },
-
             { path: '**', redirectTo: '/notfound' },
-            
-           
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
     ],
     exports: [RouterModule]

@@ -1,22 +1,10 @@
-
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-
 import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
-
-import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
-
-import { FormsModule } from '@angular/forms';
-
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-
-import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { Message, MessageService } from 'primeng/api';
@@ -26,12 +14,6 @@ import { ToastModule } from 'primeng/toast';
 import { AvatarModule } from 'primeng/avatar';
 import * as L from 'leaflet';
 import axios from 'axios';
-
-
-import { AuthService } from 'src/app/services/auth.service';
-import { Inject } from '@angular/core';
-import { SupabaseClient } from '@supabase/supabase-js';
-
 import { AuthService } from 'src/app/services/auth.service';
 import { Inject } from '@angular/core';
 import { SupabaseClient } from '@supabase/supabase-js';
@@ -106,7 +88,6 @@ export class CreateUserComponent implements OnInit {
     selectedAddress: string | null = null;
     marker!: L.Marker;
 
-
     authService = inject(AuthService);
     registerForm = new FormGroup({
         email: new FormControl('',[Validators.required, Validators.email]),
@@ -118,7 +99,6 @@ export class CreateUserComponent implements OnInit {
         console.log(this.registerForm.value);
         
     }
-
     formData = {
         name: '',
         lastname: '',
@@ -131,13 +111,8 @@ export class CreateUserComponent implements OnInit {
 
     constructor(
         public layoutService: LayoutService,
-
         private MessageService: MessageService,
         @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
-
-        private MessageService: MessageService,
-        @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
-
     ) {}
 
     ngOnInit(): void {
@@ -274,14 +249,6 @@ export class CreateUserComponent implements OnInit {
         }
     }
 
-
-    registerUser() {
-        const userData = {
-            name: this.formData.name,
-            lastname: this.formData.lastname,
-            email: this.formData.email,
-            password: this.formData.password,
-
     
 
 
@@ -293,7 +260,6 @@ export class CreateUserComponent implements OnInit {
             password: this.formData.password,
             name: this.formData.name,
             lastname: this.formData.lastname,
-
             role_id: this.formData.role_id,
             houseNumber: this.formData.houseNumber,
             address: this.selectedAddress,
@@ -301,29 +267,7 @@ export class CreateUserComponent implements OnInit {
             lat: this.selectedLocation.lat,
             description: this.formData.houseDescription,
         };
-
-        console.log('Datos del usuario:', userData);
-        // this.http.post('URL_API', userData).subscribe(...); borrar el console log y poner la logica del api
-        this.MessageService.add({
-            key: 'tst',
-            severity: 'success',
-            summary: 'Mensaje de éxito',
-            detail: 'Usuario creado',
-        });
-        this.MessageService.add({
-            key: 'tst',
-            severity: 'warn',
-            summary: 'Mensaje de advertencia',
-            detail: 'Revise sus datos',
-        });
-        this.MessageService.add({
-            key: 'tst',
-            severity: 'error',
-            summary: 'Mensaje de error',
-            detail: 'Algo falló',
-        });
-    }
-
+    
         try {
             // 1. Registro del usuario en Supabase Auth
             const { data: authData, error: authError } = await this.supabase.auth.signUp({
@@ -414,7 +358,6 @@ export class CreateUserComponent implements OnInit {
     }
     
     
-
 }
 
 declare module 'leaflet' {
