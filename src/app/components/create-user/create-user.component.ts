@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+=======
+import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
+=======
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { Message, MessageService } from 'primeng/api';
@@ -14,6 +22,12 @@ import { ToastModule } from 'primeng/toast';
 import { AvatarModule } from 'primeng/avatar';
 import * as L from 'leaflet';
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+import { AuthService } from 'src/app/services/auth.service';
+import { Inject } from '@angular/core';
+import { SupabaseClient } from '@supabase/supabase-js';
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
 
 @Component({
     selector: 'app-create-user',
@@ -85,6 +99,20 @@ export class CreateUserComponent implements OnInit {
     selectedAddress: string | null = null;
     marker!: L.Marker;
 
+<<<<<<< HEAD
+=======
+    authService = inject(AuthService);
+    registerForm = new FormGroup({
+        email: new FormControl('',[Validators.required, Validators.email]),
+        password: new FormControl('',[Validators.required])
+    });
+
+
+    onSubmit(){
+        console.log(this.registerForm.value);
+        
+    }
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
     formData = {
         name: '',
         lastname: '',
@@ -97,7 +125,12 @@ export class CreateUserComponent implements OnInit {
 
     constructor(
         public layoutService: LayoutService,
+<<<<<<< HEAD
         private MessageService: MessageService
+=======
+        private MessageService: MessageService,
+        @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
     ) {}
 
     ngOnInit(): void {
@@ -234,12 +267,26 @@ export class CreateUserComponent implements OnInit {
         }
     }
 
+<<<<<<< HEAD
     registerUser() {
         const userData = {
             name: this.formData.name,
             lastname: this.formData.lastname,
             email: this.formData.email,
             password: this.formData.password,
+=======
+    
+
+
+    
+
+    async registerUser() {
+        const userData = {
+            email: this.formData.email,
+            password: this.formData.password,
+            name: this.formData.name,
+            lastname: this.formData.lastname,
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
             role_id: this.formData.role_id,
             houseNumber: this.formData.houseNumber,
             address: this.selectedAddress,
@@ -247,6 +294,7 @@ export class CreateUserComponent implements OnInit {
             lat: this.selectedLocation.lat,
             description: this.formData.houseDescription,
         };
+<<<<<<< HEAD
         console.log('Datos del usuario:', userData);
         // this.http.post('URL_API', userData).subscribe(...); borrar el console log y poner la logica del api
         this.MessageService.add({
@@ -268,6 +316,99 @@ export class CreateUserComponent implements OnInit {
             detail: 'Algo falló',
         });
     }
+=======
+    
+        try {
+            // 1. Registro del usuario en Supabase Auth
+            const { data: authData, error: authError } = await this.supabase.auth.signUp({
+                email: userData.email,
+                password: userData.password,
+            });
+                
+            if (authError) {
+                console.error('Error al registrar usuario:', authError.message);
+                this.MessageService.add({
+                    key: 'tst',
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: authError.message,
+                });
+                return;
+            }
+    
+            const authId = authData.user?.id; // Obtenemos el auth_id generado
+    
+            if (!authId) {
+                console.error('No se pudo obtener el ID del usuario registrado.');
+                this.MessageService.add({
+                    key: 'tst',
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: 'No se pudo obtener el ID del usuario registrado.',
+                });
+                return;
+            }
+    
+            // 2. Guardar información adicional en la tabla "users"
+            const { error: insertError } = await this.supabase.from('users').insert([
+                {
+                    auth_id: authId, // Incluimos el auth_id
+                    email: userData.email,
+                    name: userData.name,
+                    lastname: userData.lastname,
+                    role_id: userData.role_id,
+                    house_number: userData.houseNumber,
+                    address: userData.address,
+                    lng: userData.lng,
+                    lat: userData.lat,
+                    description: userData.description,
+                },
+            ]);
+    
+            if (insertError) {
+                console.error('Error al guardar datos adicionales:', insertError.message);
+                this.MessageService.add({
+                    key: 'tst',
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: insertError.message,
+                });
+                return;
+            }
+    
+            // 3. Mostrar mensaje de éxito
+            this.MessageService.add({
+                key: 'tst',
+                severity: 'success',
+                summary: 'Éxito',
+                detail: 'Usuario registrado correctamente',
+            });
+    
+            // 4. Reiniciar el formulario
+            this.formData = {
+                name: '',
+                lastname: '',
+                email: '',
+                password: '',
+                role_id: 1,
+                houseNumber: '',
+                houseDescription: '',
+            };
+            this.selectedAddress = null;
+            this.selectedLocation = { lat: 0, lng: 0 };
+        } catch (err) {
+            console.error('Error inesperado:', err);
+            this.MessageService.add({
+                key: 'tst',
+                severity: 'error',
+                summary: 'Error inesperado',
+                detail: 'Ocurrió un problema al registrar el usuario.',
+            });
+        }
+    }
+    
+    
+>>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
 }
 
 declare module 'leaflet' {
