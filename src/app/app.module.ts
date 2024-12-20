@@ -11,7 +11,16 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
+
+import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot_password/forgot_password.component';
 import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
+import { HttpClient } from '@angular/common/http';
+
+import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
+
+import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
+
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent  ],

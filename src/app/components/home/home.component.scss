@@ -1,0 +1,563 @@
+/* Configuración general */
+
+
+
+.body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* Fondo suave para resaltar el contenido */
+  color: #000000; /* Texto legible */
+}
+
+/* Estilo del navbar */
+.navbar-custom {
+  background-color: #C3BDA5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  width: 100%; 
+  position: fixed;
+  z-index: 1050;
+  position: relative;
+  
+}
+
+.navbar-brand img {
+  height: 50px; /* Tamaño uniforme del logo */
+}
+
+.navbar-nav .nav-link {
+  color: #333; /* Color del texto de los enlaces */
+  font-weight: 500; /* Peso de fuente mediano */
+  text-transform: uppercase; /* Mayúsculas */
+  transition: color 0.3s ease; /* Transición suave */
+  
+}
+
+.navbar-nav .nav-link:hover {
+  color: #565453; /* Gris al pasar el cursor */
+}
+.dropdown-item {
+  font-style: italic; /* Aplica estilo en cursiva */
+  font-weight: 600; /* Semi Bold */
+  font-family: 'TuFuente', sans-serif; /* Cambia 'TuFuente' al nombre de la fuente deseada */
+  font-size: 12px; /* Tamaño de letra */
+  color: black; /* Color del texto */
+  padding: 10px 15px; /* Espaciado alrededor del texto */
+
+
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #dddbd2; /* Color de fondo al pasar el mouse */
+    color: #0b0a0a; /* Color de letra al pasar el mouse */
+  }
+}
+.dropdown-menu {
+  background-color: #fff; /* Fondo blanco limpio */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(90, 90, 90, 0.1); /* Sombra para el menú */
+  color: #000000;
+  
+}
+
+.dropdown-item {
+  color: #060606;; /* Texto gris */
+  padding: 11px 50px; /* Espaciado interno */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+}
+
+.dropdown-item:hover {
+  background-color: #eaeae9; 
+  color: #552b02; 
+}
+
+/* Botón de búsqueda */
+.custom-search {
+  width: 270px; /* Ajuste del ancho */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-icon {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: 20px 20px; /* Ajusta el tamaño del ícono */
+  padding-left: 10px; /* Espacio para el texto */
+  background-color: #C3BDA5; /* Fondo del botón */
+  color: #fff; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+ 
+}
+
+.btn-icon:hover {
+  background-color: #5b5956; /* Oscurece el color al pasar el cursor */
+}
+
+/* Íconos */
+.icon-background {
+  background-color: #C3BDA5;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 5px; /* Espacio entre iconos */
+  margin-right: 5px;
+}
+
+.icon-background:hover {
+  background-color: #5b5956; /* Más oscuro al pasar el cursor */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+.icon-gear {
+  background-color: #C3BDA5;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 5px; /* Espacio entre iconos */
+  margin-right: 5px;
+}
+
+.icon-gear:hover {
+  background-color: #5b5956; /* Más oscuro al pasar el cursor */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+
+
+
+.navbar-custom .container-fluid {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  width: 80%; /* Asegura que ocupe todo el ancho disponible */
+  
+}
+
+.container-icons{
+  padding: 0 50px;
+  width: 100%;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;  
+  margin-top: 70px; /* Espaciado igual a la altura del navbar */
+  overflow-y: auto;
+  min-height: 100vh; /* Asegura que el cuerpo ocupe todo el alto */
+  font-family: 'Arial', sans-serif;
+  display: grid;
+  justify-content: center;
+      align-items: center;
+}
+
+
+
+
+/* Asegurar que el navbar esté siempre encima */
+.navbar {
+  z-index: 1050; /* Mayor que el carrusel */
+}
+
+
+
+
+
+
+table {
+  width: 70%;
+  text-align: center;
+  border-collapse: collapse;
+  margin-top: 30px;
+ 
+  margin: 30px auto;
+  table-layout: fixed;
+  margin-top: auto;
+}
+
+thead th {
+  background-color: #ffffff;
+  font-size: 30px;
+  padding: 10px;
+  
+}
+
+thead tr:nth-child(2) th {
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 10px;
+  
+}
+
+.icon-item {
+  color: black;
+ font-size: 60px;
+}
+
+.icon-size {
+  width: 120px; /* Cambia este valor al tamaño deseado */
+  height: 160px;
+}
+
+th, td {
+  width: auto; /* Esto hace que el espacio se divida equitativamente */
+  padding: 10px; /* Espaciado interno para mejor visibilidad */
+
+
+}
+
+.header-custom {
+  font-weight: 600; /* Semi bold */
+  font-style: italic; /* Cursiva */
+  color: black; /* Texto negro */
+  text-align: center; /* Centrar texto opcional */
+  padding: 10px; /* Espaciado opcional */
+ 
+}
+
+.checkmark {
+  font-size: 30px; /* Tamaño de la palomita */
+  color: green; /* Color verde */
+  text-align: center; /* Centrar en la celda */
+  
+  font-family: Arial green, sans-serif
+
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff; /* Fondo suave para contraste */
+  margin: 0;
+  padding: 0;
+  display: block; /* Restablecemos la estructura para que no se alineen horizontalmente */
+  height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+ 
+}
+
+.carousel-container {
+  width: 96%;  /* Ajusta el ancho del carrusel */
+  max-width: 1800px; /* Limita el tamaño máximo */
+  margin: 50px auto; /* Centra el carrusel verticalmente con un pequeño margen superior */
+  background: #ffffff; /* Fondo blanco para destacar el carrusel */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+  border-radius: 15px; /* Esquinas redondeadas */
+  overflow: hidden; /* Oculta contenido que se salga del borde */
+  margin-top: 500px;
+}
+
+
+.carousel-inner img {
+  object-fit: cover; /* Evita distorsiones en las imágenes */
+  height: 550px; /* Altura del carrusel ajustada */
+  width: 100%;
+ 
+}
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Cambia el color de los controles a blanco */
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #020202; /* Indicadores en azul */
+  border-radius: 50%; /* Redondeados */
+  width: 10px;
+  height: 10px;
+}
+
+.carousel-indicators .active {
+  background-color: #C3BDA5; /* Color más oscuro para el indicador activo */
+}
+
+
+
+.fab-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+
+  color: rgb(0, 0, 0);
+  border-radius: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);*/
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+
+
+/* Estilos para la lista de FABs (botones adicionales) */
+.fab-list {
+  position: fixed;
+  bottom: 100px; /* Establece la altura de la lista */
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 5;
+}
+
+/* Estilo de los botones adicionales dentro de la FAB List */
+.fab-list .fab-item {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fab-list .fab-item:hover {
+  background-color: #e9e8e8;
+}
+
+/* Estilo para el botón principal al presionar (cambia el estado de la lista) */
+#fabToggle:checked + .fab-button + .fab-list {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilo para el input checkbox oculto (sirve como activador del FAB) */
+#fabToggle {
+  display: none;
+}
+
+.icono {
+  width: 50px;
+  height: 50px;
+}
+
+h5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrado perfecto */
+  font-weight: 600;
+  font-style: italic;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.8em;
+  color: #000000;
+
+}
+.container {
+  position: relative;
+  height: 5vh; 
+  
+}
+
+.map-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  height: 550px;
+  border: 0;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+h1 {
+  text-align: center;
+
+  
+  font-weight: 600;
+  font-style: italic;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.8em;
+  color: #000000;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ajusta según el diseño */
+  height: auto; /* Ajusta según el diseño */
+}
+
+/* Estilo del SVG para hacerlo más pequeño */
+.icon-container svg {
+  width: 100px; /* Ajusta el tamaño deseado */
+  height: auto; /* Mantén la proporción */
+}
+
+.icon-userstar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px; /* Tamaño del fondo */
+  height: 100px; /* Tamaño del fondo */
+  background-color: gold; /* Fondo dorado */
+  border-radius: 50%; /* Hacer el fondo circular */
+}
+
+.icon-userstar svg {
+  stroke: #000; /* Cambiar el color del ícono a negro (más oscuro) */
+  fill: #000; /* Relleno del ícono */
+}
+
+td {
+  font-family: 'Arial', sans-serif; /* Cambia a una fuente más clara */
+  font-weight: 600; /* Semi-bold */
+  font-style: italic; /* Italic */
+  font-size: 16px; /* Ajusta el tamaño según sea necesario */
+  color: #333333; /* Color oscuro para mejor contraste */
+  padding: 10px; /* Espaciado interno para legibilidad */
+}
+
+footer {
+  background-color: #C3BDA5; /* Color de fondo */
+  color: #333333; /* Texto oscuro */
+  padding: 40px 20px; /* Espaciado interno para darle altura */
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 calc(25% - 20px); /* Ancho flexible de cada sección */
+  margin: 10px;
+  min-width: 200px; /* Ancho mínimo para diseño responsivo */
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #555555; /* Efecto al pasar el ratón */
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 20px;
+  border-top: 1px solid #aaa;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+.custom-dropdown {
+  margin: 0 10px; /* Separa los dropdowns horizontalmente */
+}
+
+.dropdown {
+  z-index: 1050; /* Asegúrate de que sea mayor que el del carrusel */
+  top: auto; 
+  margin-top: 10px;
+}
+
+
+.dropdown-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+            
+}
+
+
+.custom-dropdown .dropdown-toggle {
+  background-color: #28a745; /* color de fondo */
+  color: white; /* color del texto */
+  padding: 13px 45px; /* Ajusta el tamaño del botón */
+  border-radius: 20; /* Elimina los bordes redondeados */
+  width: 200px; /* Establece un ancho fijo para el botón */
+  text-align: center; /* Centra el texto del botón */
+  
+}
+
+/* Establecer un ancho uniforme para las celdas de la tabla */
+.table td {
+  width: 17%; /* Dividir el espacio equitativamente entre las 5 celdas */
+  text-align: center; /* Centrar el contenido */
+  
+ 
+}
+
+/* Para la tabla, hacer que ocupe todo el ancho posible */
+.table {
+  width: 95%;
+  table-layout: fixed; /* Asegura que las celdas tengan el mismo ancho */
+  
+  border: 1px solid #000; /* Borde de las celdas */
+  background-color: #2082e4; /* Color de fondo de la tabla */
+}
+
+.mb-4{
+  margin-top: 5px;
+}
+
+
