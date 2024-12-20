@@ -1,18 +1,22 @@
-<<<<<<< HEAD
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-=======
+
 import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
+import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
-<<<<<<< HEAD
+
 import { FormsModule } from '@angular/forms';
-=======
+
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { Message, MessageService } from 'primeng/api';
@@ -22,12 +26,15 @@ import { ToastModule } from 'primeng/toast';
 import { AvatarModule } from 'primeng/avatar';
 import * as L from 'leaflet';
 import axios from 'axios';
-<<<<<<< HEAD
-=======
+
+
 import { AuthService } from 'src/app/services/auth.service';
 import { Inject } from '@angular/core';
 import { SupabaseClient } from '@supabase/supabase-js';
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
+import { AuthService } from 'src/app/services/auth.service';
+import { Inject } from '@angular/core';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 @Component({
     selector: 'app-create-user',
@@ -99,8 +106,7 @@ export class CreateUserComponent implements OnInit {
     selectedAddress: string | null = null;
     marker!: L.Marker;
 
-<<<<<<< HEAD
-=======
+
     authService = inject(AuthService);
     registerForm = new FormGroup({
         email: new FormControl('',[Validators.required, Validators.email]),
@@ -112,7 +118,7 @@ export class CreateUserComponent implements OnInit {
         console.log(this.registerForm.value);
         
     }
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
     formData = {
         name: '',
         lastname: '',
@@ -125,12 +131,13 @@ export class CreateUserComponent implements OnInit {
 
     constructor(
         public layoutService: LayoutService,
-<<<<<<< HEAD
-        private MessageService: MessageService
-=======
+
         private MessageService: MessageService,
         @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
+        private MessageService: MessageService,
+        @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
+
     ) {}
 
     ngOnInit(): void {
@@ -267,14 +274,14 @@ export class CreateUserComponent implements OnInit {
         }
     }
 
-<<<<<<< HEAD
+
     registerUser() {
         const userData = {
             name: this.formData.name,
             lastname: this.formData.lastname,
             email: this.formData.email,
             password: this.formData.password,
-=======
+
     
 
 
@@ -286,7 +293,7 @@ export class CreateUserComponent implements OnInit {
             password: this.formData.password,
             name: this.formData.name,
             lastname: this.formData.lastname,
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
             role_id: this.formData.role_id,
             houseNumber: this.formData.houseNumber,
             address: this.selectedAddress,
@@ -294,7 +301,7 @@ export class CreateUserComponent implements OnInit {
             lat: this.selectedLocation.lat,
             description: this.formData.houseDescription,
         };
-<<<<<<< HEAD
+
         console.log('Datos del usuario:', userData);
         // this.http.post('URL_API', userData).subscribe(...); borrar el console log y poner la logica del api
         this.MessageService.add({
@@ -316,8 +323,7 @@ export class CreateUserComponent implements OnInit {
             detail: 'Algo falló',
         });
     }
-=======
-    
+
         try {
             // 1. Registro del usuario en Supabase Auth
             const { data: authData, error: authError } = await this.supabase.auth.signUp({
@@ -408,7 +414,7 @@ export class CreateUserComponent implements OnInit {
     }
     
     
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
 }
 
 declare module 'leaflet' {

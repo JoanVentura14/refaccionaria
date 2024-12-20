@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 
 import { AvatarModule } from 'primeng/avatar';
-=======
+
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
@@ -33,12 +33,12 @@ import { MessageService } from 'primeng/api';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-<<<<<<< HEAD
+
     imports: [
         CommonModule,
         ButtonModule,
@@ -72,7 +72,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
             object-fit: cover;
             //border: 1px solid black; /* Contorno negro, tamaño pequeño */
         }
-=======
+
   imports: [
     CommonModule,
     FormsModule, // Importa FormsModule para habilitar [(ngModel)]
@@ -99,12 +99,12 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
         height: 130px;
         object-fit: cover;
       }
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
     `,
   ],
 })
 export class LoginComponent {
-<<<<<<< HEAD
+
     valCheck: string[] = ['remember'];
     password!: string;
 
@@ -142,7 +142,7 @@ export class LoginComponent {
       navigateToCreateUser() {
         this.router.navigate(['/create_user']);
       }
-=======
+
   formData = {
     email: '',
     password: '',
@@ -209,5 +209,5 @@ export class LoginComponent {
   navigateToCreateUser() {
     this.router.navigate(['/create_user']);
   }
->>>>>>> 1b21131c73641a08d2765dbf5a8dfa0f22127124
+
 }
