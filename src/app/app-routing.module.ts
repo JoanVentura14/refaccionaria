@@ -9,6 +9,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { AdminLayoutComponent } from './components/admin_layout/app.layout.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { AdminUsersComponent } from './components/admin-users/admin-users.compon
                 ]
 
             },
+            {path: 'home', component: HomeComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
