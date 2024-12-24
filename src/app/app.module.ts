@@ -13,9 +13,11 @@ import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { AdminLayoutModule } from './components/admin_layout/app.layout.module';
+
 @NgModule({
     declarations: [AppComponent, NotfoundComponent  ],
-    imports: [AppRoutingModule, AppLayoutModule, FormsModule],
+    imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule],
     providers: [
         {
             provide: 'SUPABASE_CLIENT',
@@ -23,7 +25,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
               return createClient('https://ssluczzvmdastrnvdvsz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzbHVjenp2bWRhc3RybnZkdnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjg2NjIsImV4cCI6MjA0ODc0NDY2Mn0.R8CcdXwP3RevK8M4SkTRG8WVTItwASu_GFXM3CYFIes');
            }
          },
-        
+
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService

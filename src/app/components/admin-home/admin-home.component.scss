@@ -1,0 +1,17 @@
+/* Centrado con Flexbox */
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    height: 70vh;           /* Toma el 100% de la altura de la pantalla */
+    margin: 0;
+  }
+
+  /* Centrado con Flexbox */
+.container2 {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    height: 19vh;           /* Toma el 100% de la altura de la pantalla */
+    margin: 0;
+  }

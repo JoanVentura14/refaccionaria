@@ -39,3 +39,4 @@ import { DialogModule } from 'primeng/dialog';
     declarations: [CrudComponent]
 })
 export class CrudModule { }
+

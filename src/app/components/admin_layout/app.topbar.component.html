@@ -1,0 +1,43 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="/admin/home">
+        <!-- <img src="assets/Logo.jpg" alt="logo" class="rounded-image"> -->
+         <p-avatar icon="pi pi-th-large" class="mr-2"></p-avatar>
+        <span class="text-900 font-medium text-xl">Panel de administración</span>
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+
+        <button class="p-link layout-topbar-button" (click)="op1.toggle($event)">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button>
+        <p-overlayPanel #op1 [showCloseIcon]="true">
+            <p-card style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px;">
+                <p-avatar icon="pi pi-user" size="large" class="mb-3"></p-avatar>
+                <div style="margin-top: 10px;">
+                    <div>{{ user.name }}</div>
+                    <div>{{ user.lastname }}</div>
+                    <div>{{ user.email }}</div>
+                    <div>{{ user.rol }}</div>
+                </div>
+            </p-card>
+        </p-overlayPanel>
+
+        <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
+        <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
+            <i class="pi pi-cog"></i>
+            <span>{{ isDarkTheme ? 'Light' : 'Dark' }} Settings</span>
+        </button>
+
+    </div>
+
+
+</div>
