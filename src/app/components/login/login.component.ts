@@ -58,7 +58,8 @@ export class LoginComponent {
     private router: Router,
     @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
   ) {}
-
+  
+  
   async loginUser() {
     const userData = {
       email: this.formData.email,
@@ -105,6 +106,7 @@ export class LoginComponent {
       });
     }
   }
+  
 
   navigateToForgotPassword() {
     this.router.navigate(['/forgot_password']);
