@@ -52,14 +52,28 @@ export class LoginComponent {
     password: '',
   };
 
+
+
+  storeUserData: {
+        id: any;
+        name: any;
+        email: any;
+        lastname: any;
+        roles: { name: any }[];
+    }
+
+
+    rol: any;
+    uuid: any;
+
   constructor(
     public layoutService: LayoutService,
     private MessageService: MessageService,
     private router: Router,
     @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
   ) {}
-  
-  
+
+
   async loginUser() {
     const userData = {
       email: this.formData.email,
@@ -72,7 +86,7 @@ export class LoginComponent {
         password: userData.password,
       });
 
-      if (error) {
+        if (error) {
         console.error('Error al iniciar sesión:', error.message);
         this.MessageService.add({
           key: 'tst',
@@ -84,6 +98,46 @@ export class LoginComponent {
       }
 
       if (data.session) {
+
+        this.uuid = data.user.id
+
+        try {
+            const { data, error } = await this.supabase
+                .from('users')
+                .select(
+                    `
+                    id,
+                    name,
+                    email,
+                    lastname,
+                    roles (name)
+                `
+                )
+                .eq('auth_id', this.uuid)
+                .single();
+
+            if (error) {
+                console.error('Error al obtener datos del usuario:', error);
+                return;
+            }
+
+            this.storeUserData = data || null;
+
+            this.rol = data.roles
+
+            localStorage.clear();
+
+            if (this.storeUserData) {
+                localStorage.setItem('userName', this.storeUserData.name || '');
+                localStorage.setItem('userLastname', this.storeUserData.lastname || '');
+                localStorage.setItem('userId', this.storeUserData.id || '');
+                localStorage.setItem('userEmail', this.storeUserData.email || '');
+                localStorage.setItem('userRol',this.rol.name || '');
+            }
+        } catch (err) {
+            console.error('Error inesperado:', err);
+        }
+
         this.MessageService.add({
           key: 'tst',
           severity: 'success',
@@ -91,10 +145,17 @@ export class LoginComponent {
           detail: 'Inicio de sesión exitoso. Redirigiendo...',
         });
 
-        // Redirigir a la página de inicio o dashboard
         setTimeout(() => {
-          this.router.navigate(['/dashboard']); // Cambia a la ruta correspondiente
-        }, 2000);
+            if (this.rol.name === 'Admin') {
+                this.router.navigate(['/admin/home']);
+            } else if (this.rol.name === 'Cliente') {
+                this.router.navigate(['/home']);
+            } else {
+                console.error('Rol desconocido:', this.rol);
+                this.router.navigate(['/login']);
+            }
+        }, 1500);
+        
       }
     } catch (err) {
       console.error('Error inesperado:', err);
@@ -106,7 +167,7 @@ export class LoginComponent {
       });
     }
   }
-  
+
 
   navigateToForgotPassword() {
     this.router.navigate(['/forgot_password']);
