@@ -93,7 +93,7 @@ export class LoginComponent {
 
         // Redirigir a la página de inicio o dashboard
         setTimeout(() => {
-          this.router.navigate(['/dashboard']); // Cambia a la ruta correspondiente
+          this.router.navigate(['/home']); // Cambia a la ruta correspondiente
         }, 2000);
       }
     } catch (err) {
