@@ -20,22 +20,22 @@
             <span>Profile</span>
         </button>
         <p-overlayPanel #op1 [showCloseIcon]="true">
-            <p-card style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px;">
+            <p-card style="display: flex; flex-direction: column; align-items: center; text-align: center">
                 <p-avatar icon="pi pi-user" size="large" class="mb-3"></p-avatar>
                 <div style="margin-top: 10px;">
-                    <div>{{ user.name }}</div>
-                    <div>{{ user.lastname }}</div>
-                    <div>{{ user.email }}</div>
-                    <div>{{ user.rol }}</div>
+                    <div>{{ userName }}</div>
+                    <div>{{ userLastname }}</div>
+                    <div>{{ userEmail }}</div>
+                    <div>{{ userRol }}</div>
                 </div>
             </p-card>
         </p-overlayPanel>
 
-        <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
         <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
             <i class="pi pi-cog"></i>
             <span>{{ isDarkTheme ? 'Light' : 'Dark' }} Settings</span>
         </button>
+        <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
 
     </div>
 
