@@ -60,6 +60,8 @@ export class LoginComponent {
   ) {}
   
   
+  
+  
   async loginUser() {
     const userData = {
       email: this.formData.email,
@@ -72,6 +74,7 @@ export class LoginComponent {
         password: userData.password,
       });
 
+      if (error) {
       if (error) {
         console.error('Error al iniciar sesión:', error.message);
         this.MessageService.add({
@@ -93,7 +96,11 @@ export class LoginComponent {
 
         // Redirigir a la página de inicio o dashboard
         setTimeout(() => {
+<<<<<<< HEAD
           this.router.navigate(['/home']); // Cambia a la ruta correspondiente
+=======
+          this.router.navigate(['/dashboard']); // Cambia a la ruta correspondiente
+>>>>>>> parent of e4e52cb (Se guarda el user en la local storge)
         }, 2000);
       }
     } catch (err) {

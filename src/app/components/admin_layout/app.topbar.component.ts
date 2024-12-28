@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from './service/app.layout.service';
+import { LayoutService } from "./service/app.layout.service";
 
 @Component({
     selector: 'app-topbar',
@@ -14,23 +14,18 @@ import { LayoutService } from './service/app.layout.service';
                 height: 120px;
             }
         `,
-    ],
+      ],
 })
 export class AppTopBarComponent {
+
     items!: MenuItem[];
     isDarkTheme: boolean = false;
-
     user = {
         name: 'Juan',
         lastname: 'Pérez',
         email: 'juan.perez@example.com',
-        rol: 'Administrador',
-    };
-
-    userName = localStorage.getItem('userName');
-    userLastname = localStorage.getItem('userLastname');
-    userEmail = localStorage.getItem('userEmail');
-    userRol = localStorage.getItem('userRol');
+        rol: 'Administrador'
+      };
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -38,7 +33,7 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService, private router: Router) {}
+    constructor(public layoutService: LayoutService, private router: Router) { }
 
     menuItems: MenuItem[] = [];
 
@@ -63,15 +58,13 @@ export class AppTopBarComponent {
     toggleTheme(): void {
         this.isDarkTheme = !this.isDarkTheme;
 
-        const themeClass = this.isDarkTheme
-            ? 'md-dark-indigo'
-            : 'lara-light-indigo';
+        const themeClass = this.isDarkTheme ? 'md-dark-indigo' : 'lara-light-indigo';
         this.theme = themeClass;
 
         this.updateMenuItems();
     }
 
-    logOut() {
+    logOut(){
         //logica del cerrado de sesion como limpiar el usuario y la tienda de datos
         this.router.navigate(['/login']);
     }
@@ -101,4 +94,6 @@ export class AppTopBarComponent {
             },
         ];
     }
+
+
 }
