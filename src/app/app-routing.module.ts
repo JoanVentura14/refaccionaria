@@ -10,7 +10,7 @@ import { AdminLayoutComponent } from './components/admin_layout/app.layout.compo
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { PruebaComponent } from './components/test_add/prueba/prueba.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -30,6 +30,7 @@ import { HomeComponent } from './components/home/home.component';
             { path: 'login', component: LoginComponent},
             { path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'create_user', component: CreateUserComponent },
+            { path: 'prueba', component: PruebaComponent },
 
             {
                 path: 'admin', component: AdminLayoutComponent,

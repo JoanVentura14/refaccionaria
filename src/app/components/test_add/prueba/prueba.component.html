@@ -1,0 +1,6 @@
+<form (submit)="onSubmit($event)">
+    <label for="csvFile">Seleccionar archivo CSV:</label>
+    <input id="csvFile" type="file" accept=".csv" (change)="onFileSelected($event)" />
+    <button type="submit">Subir</button>
+  </form>
+  
