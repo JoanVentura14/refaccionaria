@@ -2,13 +2,13 @@
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff; 
+    background-color: #2196F3; 
     color: #000000; 
   }
   
   /* Estilo del navbar */
   .navbar-custom {
-    background-color: #C3BDA5;
+    background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@
   
   
     .dropdown-menu .dropdown-item:hover {
-      background-color: #dddbd2; 
+      background-color: #ffffff; 
       color: #0b0a0a; 
       position: absolute; /* Para permitir el uso de coordenadas */
     z-index: 1050; /* Asegura que la lista aparezca encima */
@@ -85,7 +85,7 @@
     background-position: center ;
     background-size: 20px 20px; 
     padding-left: 10px; 
-    background-color: #C3BDA5; 
+    background-color: #ffffff; 
     color: #fff; 
     border: none;
     padding: 10px 20px;
@@ -103,7 +103,7 @@
   /* Íconos */
   .icon-background {
   
-    background-color: #C3BDA5;
+    background-color: #ffffff;
     color: black;
     font-size: 22px;
     padding: 18px;
@@ -118,7 +118,7 @@
     transform: scale(1.1);
   }
   .icon-gear {
-    background-color: #C3BDA5;
+    background-color: #ffffff;
     color: black;
     font-size: 22px;
     padding: 18px;
@@ -445,7 +445,7 @@
   }
   
   footer {
-    background-color: #C3BDA5; 
+    background-color: #ffffff; 
     color: #333333; 
     padding: 40px 20px; 
   }
@@ -528,7 +528,7 @@
   
   /* Estilo para el botón */
 .custom-dropdown .dropdown-toggle {
-    background-color: #d3cfc9; 
+    background-color: #ffffff; 
     color: #333; 
     padding: 13px 45px; 
     border-radius: 8px; 
