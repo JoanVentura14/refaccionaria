@@ -435,6 +435,32 @@
     fill: #000; 
   }
   
+  /* Estilo base para iconos */
+.icon-size {
+  width: 100px;
+  height: auto;
+}
+
+/* Clase específica para responsividad */
+.responsive-icon {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .icon-size {
+    width: 60px;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .icon-size {
+    width: 40px;
+  }
+}
+
   td {
     font-family: 'Arial', sans-serif; 
     font-weight: 600; 
@@ -527,24 +553,56 @@
   }
   
   /* Estilo para el botón */
-.custom-dropdown .dropdown-toggle {
-    background-color: #ffffff; 
-    color: #333; 
-    padding: 13px 45px; 
-    border-radius: 8px; 
-    width: 200px; 
-    text-align: center; 
-    height: 56px; 
-    font-weight: 500; 
-    border: 2px solid #c3bda5; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    transition: all 0.3s ease; 
-    font-family: 'Arial', sans-serif; 
-    font-weight: 600; 
-    font-style: italic; 
-    font-size: 16px; 
-    
-}
+  .custom-dropdown .dropdown-toggle {
+    background-color: #ffffff;
+    color: #333;
+    padding: 13px 45px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    height: 56px;
+    font-weight: 500;
+    border: 2px solid #c3bda5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 16px;
+  }
+  
+  .custom-dropdown .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(90, 90, 90, 0.1);
+  }
+  
+  /* Responsividad */
+  @media (max-width:1024px) {
+    .custom-dropdown .dropdown-toggle {
+      width: 115px; /* Ajusta el ancho en pantallas más pequeñas */
+      padding: 10px 30px;
+      font-size: 14px;
+      height: 48px;
+    }
+ 
+    .custom-dropdown .dropdown-menu {
+      font-size: 14px; /* Ajusta el tamaño de la fuente */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .custom-dropdown .dropdown-toggle {
+      width: 100%; /* Haz que ocupe el ancho completo */
+      padding: 8px 15px;
+      font-size: 12px;
+      height: auto; /* Deja que la altura se ajuste automáticamente */
+    }
+  
+    .custom-dropdown .dropdown-menu {
+      font-size: 12px; /* Ajusta aún más el tamaño de la fuente */
+    }
+  }
+  
 
 /* Ocultar la flecha del dropdown */
 .custom-dropdown .dropdown-toggle::after {
