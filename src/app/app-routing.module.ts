@@ -11,6 +11,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { HomeComponent } from './components/home/home.component';
 import { PruebaComponent } from './components/test_add/prueba/prueba.component';
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+    
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -37,6 +39,7 @@ import { PruebaComponent } from './components/test_add/prueba/prueba.component';
                 children:[
                     { path: 'home', component: AdminHomeComponent },
                     { path: 'users', component: AdminUsersComponent },
+                    { path: 'add-products', component: AdminAddProductComponent },
                 ]
 
             },

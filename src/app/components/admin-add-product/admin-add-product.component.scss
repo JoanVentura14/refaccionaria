@@ -1,0 +1,77 @@
+
+.container{
+  padding: 40px;
+}
+
+.files-area{
+  border: 3px dashed  #2196F3;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.highlight{
+  border: 3px solid red;
+  transition: ls ease-in;
+}
+
+.tittle{
+  margin: 0;
+  padding: 0;
+  font-size: 36px;         /* Tamaño de fuente más adecuado */
+  font-weight: 600;        /* Fuente más gruesa (negrita) */
+  line-height: 1.2;        /* Alineación vertical ajustada */
+  letter-spacing: 1px;     /* Espaciado entre letras */
+  color: #222222;             /* Color oscuro para un contraste elegante */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.files-message{
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.message{
+  width: 50%;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.btn-select-files {
+  padding: 15px 40px;  /* 15px arriba y abajo, 60px a la izquierda y derecha */
+  border-radius: 16px;
+  background-color: #2196F3;
+  color: white;
+  border: 1px solid #2196F3;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;  /* Cambiar el cursor para indicar que el botón es interactivo */
+  transition: background-color 0.3s ease;  /* Transición suave para cambios de color */
+}
+
+.selected-files{
+  justify-content: center;
+  display: flex;
+  margin-top: 36px;
+  column-gap: 24px;
+  flex-wrap: wrap;
+}
+
+.file{
+  padding: 12px;
+ 
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.divider {
+  border: none;               /* Elimina el borde predeterminado */
+  border-top: 2px solid #2196F3;  /* Aplica una línea azul encima */
+  margin: 20px 0;             /* Agrega espacio arriba y abajo de la línea */
+}

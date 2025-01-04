@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div #dropArea class="files-area" >
+  <h2 class="tittle"> Agregar productos</h2>
+
+  <hr class="divider">
+
+  <div class="files-message">
+
+    <span class="message">Arrastra el archivo csv o presiona el boton para buscarlo</span>
+  </div>
+
+<div class="selected-files">
+  
+ <div class="file"> 
+  {{ selectedFileName }}
+ </div>
+ 
+</div>
+
+<div class="button-container">
+
+  <button (click)="openSelectFileDialog()" class="btn-select-files">Seleccionar archivo</button>
+
+
+  <input id="csvFile"  #fileElement type="file" accept=".csv" (change)="onFileSelected($event)" [hidden]="true"/>
+
+</div>
+
+</div>
+</div>
