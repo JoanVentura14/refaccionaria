@@ -11,6 +11,7 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { HomeComponent } from './components/home/home.component';
 import { PruebaComponent } from './components/test_add/prueba/prueba.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -31,6 +32,7 @@ import { PruebaComponent } from './components/test_add/prueba/prueba.component';
             { path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'create_user', component: CreateUserComponent },
             { path: 'prueba', component: PruebaComponent },
+            { path: 'cart', component: CartComponent }, // Ruta para el carrito
 
             {
                 path: 'admin', component: AdminLayoutComponent,
