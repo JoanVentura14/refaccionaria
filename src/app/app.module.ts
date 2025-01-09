@@ -18,6 +18,7 @@ import { TableModule } from 'primeng/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './components/cart/cart.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent,CartComponent  ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule,BrowserModule,

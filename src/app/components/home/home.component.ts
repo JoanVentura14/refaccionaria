@@ -4,17 +4,19 @@ import { DataViewModule } from 'primeng/dataview'; // Módulo de PrimeNG para la
 import { PickListModule } from 'primeng/picklist'; // Módulo de PrimeNG para listas seleccionables
 import { OrderListModule } from 'primeng/orderlist'; // Módulo de PrimeNG para listas ordenables
 import { CommonModule } from '@angular/common'; // Módulo común de Angular
-
+import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule],
+  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule,NavbarComponent ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   products: any[] = []; // Array donde se almacenarán los productos
+  filteredProducts: any[] = []; // Array de productos filtrados
   sortOptions: any[] = []; // Opciones de ordenación
+  searchQuery: string = ''; // Variable para el texto de búsqueda
   isLoading = true; // Indicador de carga
   currentPage = 1;
   rowsPerPage = 9;
@@ -75,6 +77,17 @@ export class HomeComponent implements OnInit {
 
   changePage(direction: number) {
     this.currentPage += direction;
+  }
+  onSearch() {
+    if (this.searchQuery.trim() === '') {
+      this.filteredProducts = [...this.products]; // Si la búsqueda está vacía, muestra todos los productos
+    } else {
+      // Filtra los productos según el nombre o descripción
+      this.filteredProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   }
 }
 
