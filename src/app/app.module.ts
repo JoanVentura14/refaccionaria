@@ -14,10 +14,16 @@ import { PhotoService } from './demo/service/photo.service';
 import { FormsModule } from '@angular/forms'; // <-- Importa FormsModule
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { AdminLayoutModule } from './components/admin_layout/app.layout.module';
-
+import { TableModule } from 'primeng/table';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './components/cart/cart.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent  ],
-    imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule],
+    declarations: [AppComponent, NotfoundComponent,CartComponent  ],
+    imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule,BrowserModule,
+        BrowserAnimationsModule, // Necesario para PrimeNG
+        TableModule,],
     providers: [
         {
             provide: 'SUPABASE_CLIENT',
@@ -30,7 +36,7 @@ import { AdminLayoutModule } from './components/admin_layout/app.layout.module';
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent, CartComponent],
 })
 export class AppModule {
 
