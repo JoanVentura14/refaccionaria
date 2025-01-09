@@ -32,6 +32,8 @@ export class AdminAddProductComponent implements AfterViewInit{
     @Inject('SUPABASE_CLIENT') private supabase: SupabaseClient
   ) {}
 
+
+  
   // Método para procesar el archivo CSV seleccionado
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -74,6 +76,8 @@ export class AdminAddProductComponent implements AfterViewInit{
     // Validar que haya datos procesados antes de enviarlos
     if (this.processedData.length === 0) {
       console.error('No hay datos válidos para subir.');
+      alert('No hay datos válidos para subir.');
+      
       return;
     }
 
@@ -84,8 +88,11 @@ export class AdminAddProductComponent implements AfterViewInit{
 
       if (error) {
         console.error('Error al subir productos:', error);
+        alert('Error al subir productos:');
+        
       } else {
         console.log('Productos subidos exitosamente:', data);
+        alert('Productos subidos exitosamente:');
       }
     } catch (error) {
       console.error('Error al procesar el archivo:', error);
@@ -119,6 +126,7 @@ ngAfterViewInit(): void {
         event.stopPropagation();
         this.dragOver = true;
         this.renderer2.setStyle(this.dropArea.nativeElement, 'border', '2px dashed #000');
+        
       }
     )
   }
@@ -135,26 +143,56 @@ ngAfterViewInit(): void {
     )
   }
 
-  ListenDrop(){
+  ListenDrop() {
     this.renderer2.listen(
-      this.dropArea.nativeElement, 'drop', (event: DragEvent) =>{
+      this.dropArea.nativeElement, 
+      'drop', 
+      (event: DragEvent) => {
         event.preventDefault();
         event.stopPropagation();
-
-        this.dragOver = true;
-
+  
+        // Cambiar estilo para indicar éxito en la carga
         this.renderer2.setStyle(this.dropArea.nativeElement, 'border', '2px solid #7CFC00');
-
+        this.dragOver = false;
+  
         const files = event.dataTransfer?.files;
         if (files && files.length > 0) {
-          const file = files[0];  // Tomamos el primer archivo (puedes manejar más si es necesario)
-          this.selectedFileName = file.name;  // Asignar el nombre del archivo a la variable
-          console.log('Archivo cargado:', this.selectedFileName);  // Mostrar el nombre del archivo en la consola
+          const file = files[0];
+          this.selectedFileName = file.name;
+  
+          // Crear un evento simulado para que funcione con onFileSelected
+          const simulatedEvent = { target: { files: [file] } } as unknown as Event;
+  
+          this.onFileSelected(simulatedEvent); // Llamar a onFileSelected con el evento simulado
+          console.log('Archivo cargado:', this.selectedFileName);
+          
+        } else {
+          console.log('No se detectaron archivos');
+          
         }
-        console.log('El archivo se cargo bien');
       }
-    )
+    );
   }
+  
+
+  onEliminar(): void {
+    if (this.selectedFileName) {
+      // Restablecer el archivo seleccionado y los datos procesados
+      this.selectedFileName = null;
+      this.csvData = [];
+      this.processedData = [];
+  
+      // Restablecer el estado visual del área de arrastre
+      if (this.dropArea) {
+        this.renderer2.setStyle(this.dropArea.nativeElement, 'border', '2px solid #2196F3'); // Estado original
+      }
+  
+      console.log('Archivo eliminado correctamente.');
+    } else {
+      console.warn('No hay un archivo cargado para eliminar.');
+    }
+  }
+  
 
 }
 

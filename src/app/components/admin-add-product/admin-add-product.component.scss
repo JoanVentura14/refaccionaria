@@ -75,3 +75,50 @@
   border-top: 2px solid #2196F3;  /* Aplica una línea azul encima */
   margin: 20px 0;             /* Agrega espacio arriba y abajo de la línea */
 }
+
+.buttons{
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  display: flex;
+}
+
+.btn-eliminar {
+  width: 100px; 
+  height: 40px; 
+  background-color: #e74c3c; /* Rojo llamativo */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negritas */
+  cursor: pointer; /* Manita al pasar el cursor */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones */
+}
+
+.btn-subir {
+  background-color: #5cb304; 
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negritas */
+  cursor: pointer; /* Manita al pasar el cursor */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones */
+  width: 100px; 
+  height: 40px; 
+  margin-left: 30px;
+ 
+}
+
+.btn-subir:active {
+  background-color: #155d89; /* Azul aún más oscuro al hacer clic */
+  transform: translateY(2px); /* Baja un poco al hacer clic */
+}
+
+.btn-eliminar:active {
+  background-color: #f8270f; 
+  transform: translateY(2px); 
+}
