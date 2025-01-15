@@ -18,12 +18,14 @@ import { TableModule } from 'primeng/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './components/cart/cart.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { PrimeNGModule } from './models/prime-ng.module';
+import { ToolbarModule } from 'primeng/toolbar';
+
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent,CartComponent  ],
+    declarations: [AppComponent, NotfoundComponent,CartComponent    ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule,BrowserModule,
         BrowserAnimationsModule, // Necesario para PrimeNG
-        TableModule,],
+        TableModule,PrimeNGModule,ToolbarModule],
     providers: [
         {
             provide: 'SUPABASE_CLIENT',

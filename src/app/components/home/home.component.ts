@@ -4,11 +4,11 @@ import { DataViewModule } from 'primeng/dataview'; // Módulo de PrimeNG para la
 import { PickListModule } from 'primeng/picklist'; // Módulo de PrimeNG para listas seleccionables
 import { OrderListModule } from 'primeng/orderlist'; // Módulo de PrimeNG para listas ordenables
 import { CommonModule } from '@angular/common'; // Módulo común de Angular
-import { NavbarComponent } from '../navbar/navbar.component';
+import { NavBarComponent } from '../nav-bar/nav-bar.component'; 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule,NavbarComponent ],
+  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule,NavBarComponent ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

@@ -13,3 +13,12 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/badges.scss";
 @import "assets/demo/styles/code.scss";
 /* styles.scss */
+
+/* Importación de Flowbite */
+@import "../node_modules/flowbite/dist/flowbite.min.css";
+
+/* Otras importaciones de Tailwind y tus estilos personalizados */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
