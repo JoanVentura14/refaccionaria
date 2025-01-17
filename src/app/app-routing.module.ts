@@ -10,12 +10,13 @@ import { AdminLayoutComponent } from './components/admin_layout/app.layout.compo
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { HomeComponent } from './components/home/home.component';
-import { PruebaComponent } from './components/test_add/prueba/prueba.component';
+import { PruebasComponent } from '../app/components/pruebas/pruebas.component';
 
 import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
     
 
 import { CartComponent } from './components/cart/cart.component';
+import { ListProductsComponent } from './components/list-products/list-products.component';
 
 @NgModule({
     imports: [
@@ -36,7 +37,7 @@ import { CartComponent } from './components/cart/cart.component';
             { path: 'login', component: LoginComponent},
             { path: 'forgot_password', component: ForgotPasswordComponent},
             { path: 'create_user', component: CreateUserComponent },
-            { path: 'prueba', component: PruebaComponent },
+            { path: 'prueba', component: PruebasComponent },
             { path: 'cart', component: CartComponent }, // Ruta para el carrito
 
             {
@@ -48,6 +49,10 @@ import { CartComponent } from './components/cart/cart.component';
                 ]
 
             },
+            {
+                path: 'list-products',
+                component: ListProductsComponent,
+              },
             {path: 'home', component: HomeComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },

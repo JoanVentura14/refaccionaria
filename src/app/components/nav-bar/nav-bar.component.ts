@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -19,6 +19,13 @@ export class NavBarComponent {
     isDropdownVisible = false;
   
     constructor(private supabaseService: SupabaseService) {}
+    @Output() searchTerm = new EventEmitter<string>();
+
+  // Emitir el valor de búsqueda cuando presione enter
+  onSearch(event: any): void {
+    const query = event.target.value.trim();
+    this.searchTerm.emit(query); // Emitir el término de búsqueda
+  }
   
     async toggleDropdown() {
       this.isDropdownVisible = !this.isDropdownVisible;

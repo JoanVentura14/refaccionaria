@@ -20,9 +20,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './components/cart/cart.component';
 import { PrimeNGModule } from './models/prime-ng.module';
 import { ToolbarModule } from 'primeng/toolbar';
+import { ListProductsComponent } from './components/list-products/list-products.component';
+import { PruebasComponent } from './components/pruebas/pruebas.component';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent,CartComponent    ],
+    declarations: [AppComponent, NotfoundComponent,CartComponent, PruebasComponent   ],
     imports: [AppRoutingModule, AppLayoutModule, FormsModule, AdminLayoutModule,BrowserModule,
         BrowserAnimationsModule, // Necesario para PrimeNG
         TableModule,PrimeNGModule,ToolbarModule],

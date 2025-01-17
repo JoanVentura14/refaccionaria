@@ -5,6 +5,9 @@ import { PickListModule } from 'primeng/picklist'; // Módulo de PrimeNG para li
 import { OrderListModule } from 'primeng/orderlist'; // Módulo de PrimeNG para listas ordenables
 import { CommonModule } from '@angular/common'; // Módulo común de Angular
 import { NavBarComponent } from '../nav-bar/nav-bar.component'; 
+import { SupabaseService } from 'src/app/services/supabase.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -13,6 +16,15 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  vehicles: any[] = [];
+  brands: any[] = [];
+  models: string[] = [];
+  motors: string[] = [];
+  isDropdownVisible = false;
+  isDropdownVisibleB = false;
+  isDropdownVisibleM = false;
+  isDropdownVisibleMO = false;
+  isDropdownVisibleA = false;
   products: any[] = []; // Array donde se almacenarán los productos
   filteredProducts: any[] = []; // Array de productos filtrados
   sortOptions: any[] = []; // Opciones de ordenación
@@ -20,8 +32,103 @@ export class HomeComponent implements OnInit {
   isLoading = true; // Indicador de carga
   currentPage = 1;
   rowsPerPage = 9;
+  selectedVehicleYear: string | null = null;
+  selectedVehicleBrand: string | null = null;
+  selectedVehicleModel: string | null = null;
+  selectedVehicleMotor: string | null = null;
+  selectedVehicleAutopart: string | null = null;
+  constructor(@Inject('SUPABASE_CLIENT') private supabase: SupabaseClient,private supabaseService: SupabaseService,private router: Router) {}
 
-  constructor(@Inject('SUPABASE_CLIENT') private supabase: SupabaseClient) {}
+  navigateToListProducts() {
+    this.router.navigate(['/list-products'], {
+      queryParams: {
+        year: this.selectedVehicleYear,
+        brand: this.selectedVehicleBrand,
+        model: this.selectedVehicleModel,
+        motor: this.selectedVehicleMotor,
+      },
+    });
+  }
+  async goToListProducts() {
+    const products = await this.supabaseService.getProductsByCompatibility(
+      this.selectedVehicleYear,
+      this.selectedVehicleBrand,
+      this.selectedVehicleModel,
+      this.selectedVehicleMotor
+    );
+  
+    if (products.length) {
+      console.log('Productos encontrados:', products);
+      // Aquí rediriges al componente de productos con los datos obtenidos
+      this.router.navigate(['/list-products'], { state: { products } });
+    } else {
+      console.warn('No se encontraron productos compatibles.');
+    }
+  }
+  
+  async toggleDropdown() {
+    this.isDropdownVisible = !this.isDropdownVisible;
+    if (this.isDropdownVisible && this.vehicles.length === 0) {
+      this.vehicles = await this.supabaseService.getVehicles();
+    }
+  }
+  async selectVehicle(year: string) {
+    this.selectedVehicleYear = year; // Guarda el año seleccionado
+    this.isDropdownVisible = false; // Cierra el dropdown (opcional)
+    console.log('Año seleccionado:', this.selectedVehicleYear); // Depuración
+    this.brands = await this.supabaseService.getBrandsByYear(year);
+    this.selectedVehicleModel = null;
+  this.models = [];
+  }
+  toggleDropdownB() {
+    this.isDropdownVisibleB = !this.isDropdownVisibleB;
+    }
+  
+  
+  async selectBrand(brand: string) {
+    this.selectedVehicleBrand = brand; // Guarda el año seleccionado
+    this.isDropdownVisibleB = false; // Cierra el dropdown (opcional)
+    console.log('Marca seleccionada:', this.selectedVehicleBrand); // Depuración
+    this.models = await this.supabaseService.getModelsByYearAndBrand(this.selectedVehicleYear, brand);
+  }
+  async toggleDropdownM() {
+    this.isDropdownVisibleM = !this.isDropdownVisibleM;
+    if (this.isDropdownVisibleM && this.vehicles.length === 0) {
+      this.vehicles = await this.supabaseService.getVehicles();
+    }
+  }
+  
+  async selectModel(model: string) {
+    this.selectedVehicleModel = model; // Guarda el año seleccionado
+    this.isDropdownVisibleM = false; // Cierra el dropdown (opcional)
+    console.log('Marca seleccionada:', this.selectedVehicleModel); // Depuración
+    
+  }
+  async toggleDropdownMO() {
+    this.isDropdownVisibleMO = !this.isDropdownVisibleMO;
+    if (this.isDropdownVisibleMO ) {
+      this.motors = await this.supabaseService.getMotorByYearAndBrand(this.selectedVehicleYear,this.selectedVehicleBrand, this.selectedVehicleModel);
+    }
+  }
+  
+  selectMotor(motor: string) {
+    this.selectedVehicleMotor = motor; // Guarda el año seleccionado
+    this.isDropdownVisibleMO = false; // Cierra el dropdown (opcional)
+    console.log('Marca seleccionada:', this.selectedVehicleMotor); // Depuración
+  }
+  async toggleDropdownA() {
+    this.isDropdownVisibleA = !this.isDropdownVisibleA;
+    if (this.isDropdownVisibleA && this.vehicles.length === 0) {
+      this.vehicles = await this.supabaseService.getVehicles();
+    }
+  }
+  
+  selectAutopart(autopart: string) {
+    this.selectedVehicleAutopart = autopart // Guarda el año seleccionado
+    this.isDropdownVisibleA = false; // Cierra el dropdown (opcional)
+    console.log('Marca seleccionada:', this.selectedVehicleAutopart); // Depuración
+  }
+  
 
   ngOnInit(): void {
     // Definición de las opciones de ordenación
