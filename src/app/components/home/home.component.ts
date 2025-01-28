@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common'; // Módulo común de Angular
 import { NavBarComponent } from '../nav-bar/nav-bar.component'; 
 import { SupabaseService } from 'src/app/services/supabase.service';
 import { Router } from '@angular/router';
-
+import { TruncatePipe } from 'src/app/truncate.pipe';
+import { CartService } from '../../services/cart-2.service'; 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule,NavBarComponent ],
+  imports: [DataViewModule, PickListModule, OrderListModule, CommonModule,NavBarComponent, TruncatePipe ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -37,8 +38,9 @@ export class HomeComponent implements OnInit {
   selectedVehicleModel: string | null = null;
   selectedVehicleMotor: string | null = null;
   selectedVehicleAutopart: string | null = null;
-  constructor(@Inject('SUPABASE_CLIENT') private supabase: SupabaseClient,private supabaseService: SupabaseService,private router: Router) {}
+  constructor(@Inject('SUPABASE_CLIENT') private supabase: SupabaseClient,private supabaseService: SupabaseService,private router: Router,private cartService: CartService) {}
 
+  
   navigateToListProducts() {
     this.router.navigate(['/list-products'], {
       queryParams: {
@@ -185,16 +187,19 @@ export class HomeComponent implements OnInit {
   changePage(direction: number) {
     this.currentPage += direction;
   }
-  onSearch() {
-    if (this.searchQuery.trim() === '') {
-      this.filteredProducts = [...this.products]; // Si la búsqueda está vacía, muestra todos los productos
-    } else {
-      // Filtra los productos según el nombre o descripción
-      this.filteredProducts = this.products.filter(product =>
-        product.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+  onSearch(event: any): void {
+    const searchTerm = event.target.value.trim();
+    if (searchTerm) {
+      this.router.navigate(['/list-products'], { state: { searchTerm } });
     }
   }
+
+
+  addToCart(product: any): void {
+    this.cartService.addToCart(product);
+    console.log('Producto agregado:', product);
+  }
+
+  
 }
 

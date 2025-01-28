@@ -22,12 +22,25 @@ async getCategories(): Promise<any[]> {
   async getVehicles(): Promise<any[]> {
     const { data, error } = await this.supabase.from('vehicles').select('*');
     if (error) {
-      console.error('Error fetching categories:', error);
+      console.error('Error fetching vehicles:', error);
       return [];
     }
     console.log('Raw data from Supabase:', data);
-    return data || [];
+    
+    // Eliminar duplicados basándonos en el año
+    const uniqueVehicles = [];
+    const seenYears = new Set();
+  
+    for (const vehicle of data) {
+      if (!seenYears.has(vehicle.year)) {
+        uniqueVehicles.push(vehicle);
+        seenYears.add(vehicle.year); // Añadir el año al conjunto para que no se repita
+      }
+    }
+    uniqueVehicles.sort((a, b) => b.year - a.year);
+    return uniqueVehicles;
   }
+  
   async getBrandsByYear(year: string): Promise<string[]> {
     const { data, error } = await this.supabase
       .from('vehicles')
@@ -147,17 +160,17 @@ async getCategories(): Promise<any[]> {
 
   
   async searchProducts(query: string) {
+    
     try {
       const { data, error } = await this.supabase
         .from('products')
         .select('*')
-        .ilike('name', `%${query}%`) // Busca en el nombre de los productos
-        .or(`description.ilike.%${query}%`); // Busca también en la descripción
+        .or(`name.ilike.%${query}%,description.ilike.%${query}%`);
 
       if (error) {
         throw error;
       }
-
+      console.log(data);
       return { data, error: null };
     } catch (error) {
       console.error('Error al buscar productos:', error);

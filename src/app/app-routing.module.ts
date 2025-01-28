@@ -50,6 +50,10 @@ import { ListProductsComponent } from './components/list-products/list-products.
 
             },
             {
+                path: 'list-products/:product',
+                component: ListProductsComponent,
+              },
+              {
                 path: 'list-products',
                 component: ListProductsComponent,
               },

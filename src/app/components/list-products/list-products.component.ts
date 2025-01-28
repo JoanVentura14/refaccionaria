@@ -22,16 +22,35 @@ export class ListProductsComponent implements OnInit {
     { label: 'Precio: Bajo a Alto', value: 'lowToHigh' },
     { label: 'Precio: Alto a Bajo', value: 'highToLow' },
   ];
-  constructor(private router: Router, private supabaseService: SupabaseService) {
+
+  productSearch: string = ''; // Variable para el texto de búsqueda
+
+  constructor(private router: Router, private supabaseService: SupabaseService,private route: ActivatedRoute) {
     const navigation = this.router.getCurrentNavigation();
     this.products = navigation?.extras?.state?.['products'] || [];
   }
+  ngOnInit2(): void {
+    const navigation = this.router.getCurrentNavigation();
+    const searchTerm = navigation?.extras?.state?.['searchTerm'];
+    if (searchTerm) {
+      this.searchProducts(searchTerm);
+    }
+  }
+  
 
   ngOnInit(): void {
     // Recuperamos el término de búsqueda pasado desde el componente contenedor
     const navigation = this.router.getCurrentNavigation();
-    const searchTerm = navigation?.extras?.state?.['searchTerm'];
+    // const searchTerm = navigation?.extras?.state?.['searchTerm'];
 
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('product');
+      this.productSearch = idParam ? String(idParam) : undefined; // Asigna undefined si no hay ID
+      
+    });
+    const searchTerm = this.productSearch
+    console.log(searchTerm);
+    
     if (searchTerm) {
       this.searchProducts(searchTerm); // Hacemos la búsqueda si hay un término
     } else {
